@@ -17,7 +17,7 @@ export default {
     }
 
     Vue.prototype.$setPageTitle = (title) => {
-      window.document.setDocumentTitle(title + '-' + window.$tt('Usleju', '美乐居'))
+      window.document.setDocumentTitle(title + '-' + window.$tt('Usleju', '米乐居'))
     }
 
     Vue.filter('price', (value) => {

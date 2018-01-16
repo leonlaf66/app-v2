@@ -51,7 +51,7 @@ window.document.setDocumentTitle = function (title) {
 
 router.afterEach((to, from) => {
   window.document.body.className = ' route-' + to.name + ' ' + window.$lang
-  let title = window.$tt('Usleju', '美乐居')
+  let title = window.$tt('Usleju', '米乐居')
   if (typeof to.meta.title !== 'undefined') {
     title = window.$tt(to.meta.title) + '-' + title
   }
