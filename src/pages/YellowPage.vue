@@ -16,9 +16,6 @@
 
     <results :items="items" style="margin-top:15px"></results>
 
-    <div v-if="loading" style="padding:0 10px;">
-      {{ 'Loading...' | $tt('载入中...') }}
-    </div>
     <div v-if="!loading && items.length === 0" style="padding:0 10px;">
       {{ 'No record found...' | $tt('没有了...') }}
     </div>
@@ -40,17 +37,21 @@ export default {
     }
   },
   created () {
+    this.$store.dispatch('loading', true)
     this.loadTopItems().then(data => {
       this.types = data.types
       this.items = data.topItems
       this.loading = false
+      this.$store.dispatch('loading', false)
     })
   },
   methods: {
     onTypeSelected (item) {
       this.currentTypeName = item.name
+      this.$store.dispatch('loading', true)
       this.loadTypeItems(item.id).then(data => {
         this.items = data.items
+        this.$store.dispatch('loading', false)
       })
     },
     onReturnTop () {

@@ -26,7 +26,7 @@
           </div>
           <div class="item">
             <label>{{ 'Living Area' | $tt('居住面积') }}</label>
-            <span>{{ data.square_feet | field-display}}</span>
+            <span>{{ data.square_feet | square | field-display}}</span>
           </div>
           <div class="item">
             <label>{{ 'Area' | $tt('区域') }}</label>
