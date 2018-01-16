@@ -5,11 +5,11 @@
         <div class="left" @click="goBack()">
           <i class="iconfont icon-zuojiantou"></i>
         </div>
-        <div class="middle">
+        <div class="middle" :class="{focus: qTextFocus}">
           <div class="search-input">
             <a class="type-selector">{{ typeName }}</a>
             <div class="input-box">
-              <autocomplete ref="qInput" v-model="q" @focus="onEntered()" @confirm="onSearchConfirm">
+              <autocomplete ref="qInput" v-model="q" @focus="onEntered()" @blue="onBlue" @confirm="onSearchConfirm">
               </autocomplete>
             </div>
             <i class="iconfont icon-remove" @click="onClearSearchText()" v-if="isEntered && q !== ''"></i>
@@ -72,6 +72,7 @@ export default {
   data () {
     return {
       isEntered: false,
+      qTextFocus: false,
       filterQText: '',
       private: {
         q: '',
@@ -165,6 +166,10 @@ export default {
     onEntered () {
       this.$refs.qInput.loadOptions(this.searchOptions.options)
       this.isEntered = true
+      this.qTextFocus = true
+    },
+    onBlue () {
+      this.qTextFocus = false
     },
     onSearchConfirm () {
       this.$refs.qInput.reset()
@@ -250,7 +255,10 @@ export default {
     }
     .middle {
       left:37px;
-      right:42px;
+      right:12px;
+      &.focus {
+        right:42px;
+      }
     }
     .search-input {
       display: inline-block;

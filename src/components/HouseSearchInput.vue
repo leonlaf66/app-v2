@@ -18,6 +18,7 @@ export default {
   data () {
     return {
       q: '',
+      isFocused: false,
       options: [],
       isShowDdlb: false
     }
@@ -50,10 +51,13 @@ export default {
       }, 10)
     },
     onFocus () {
+      this.isFocused = true
       this.$emit('focus')
     },
     onBlue () {
+      this.isFocused = false
       this.isShowDdlb = false
+      this.$emit('blue')
     }
   },
   watch: {
