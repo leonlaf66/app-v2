@@ -1,0 +1,122 @@
+.vux-header {
+  // background:-webkit-gradient(linear, 0 0, 0 bottom, from(#eee), to(rgba(200, 200, 200, .9)));
+  background-color:rgb(160, 183, 55) !important;
+  .vux-header-left a,
+  .vux-header-left button,
+  .vux-header-right a,
+  .vux-header-right button,
+  .vux-header-left,
+  .vux-header-right,
+  .vux-header-title {
+    color:#fff !important;
+  }
+  .vux-header-left .left-arrow:before {
+    border-color:#fff !important;
+  }
+  &.fixed {
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:1;
+  }
+}
+.vux-label {
+  white-space: nowrap;
+}
+.weui-cells__title {padding-left:5px;}
+.vux-label, .weui-cell__ft {font-size:13px}
+
+/*水平布局*/
+.lay-row {
+  font-size:0;
+}
+.lay-col {
+  display:inline-block;
+  font-size:13px;
+}
+
+/*背景图*/
+.bg-img {
+  background-color:#e6e6e6;
+  background-size: cover;
+  background-position: center center;
+}
+/*绿色文本*/
+.high-text {
+  color: #5d9639;
+}
+/*绿色背景*/
+.high-bg {
+  background-color: #99bd2a;
+}
+/*透明绿色背景*/
+.high-bg-t {
+  background-color: rgba(160, 183, 55, 0.7);
+  color:#fff;
+}
+/*橙色文本*/
+.high2-text {
+  color:rgb(228, 169, 67);
+}
+/*蓝色文本*/
+.high3-text {
+  color: rgb(98, 161, 231);
+}
+/*红色文本*/
+.red-text {
+  color: #F05E4B;
+}
+/*标题*/
+.h2-title {
+  margin:0;
+  font-size: 14px;
+  padding: 0 5px;
+  padding-bottom: 10px;
+  > .lt {
+    float:right;
+    color:#AFD25E;
+  }
+}
+/*文本不换行*/
+.line-text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/*有底部导航*/
+.has-b-nav {
+  margin-bottom:58px;
+}
+/*有底部导航*/
+.has-fixed-header {
+  margin-top:40px;
+}
+/*可点击*/
+.link-able {
+  &:active {
+    background:#eee;
+  }
+}
+/*可点击条*/
+.link-bar {
+  &::after {
+    content: " ";
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+    border-width: 2px 2px 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    position: relative;
+    top: -2px;
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: 10px;
+  }
+  &:active {
+    background:#eee;
+  }
+}
+

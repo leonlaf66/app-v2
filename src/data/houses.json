@@ -1,0 +1,62 @@
+[
+  {
+    "id": "72206736",
+    "nm": "布罗克顿多家庭",
+    "loc": "417 Belmont St,  Brockton MA 02301",
+    "beds": "6",
+    "baths": [1, 0],
+    "square": 37,
+    "status": "1",
+    "l_days": 1,
+    "price": 3500000,
+    "tags": "00100"
+  },
+  {
+    "id": "72206736",
+    "nm": "布罗克顿多家庭",
+    "loc": "417 Belmont St,  Brockton MA 02301",
+    "beds": "6",
+    "baths": [1, 0],
+    "square": 37,
+    "status": "1",
+    "l_days": 4,
+    "price": 2505000,
+    "tags": "00100"
+  },
+  {
+    "id": "72206736",
+    "nm": "布罗克顿多家庭",
+    "loc": "417 Belmont St,  Brockton MA 02301",
+    "beds": "6",
+    "baths": [1, 0],
+    "square": 37,
+    "status": "1",
+    "l_days": 10,
+    "price": 247000,
+    "tags": "00100"
+  },
+  {
+    "id": "72206736",
+    "nm": "布罗克顿多家庭",
+    "loc": "417 Belmont St,  Brockton MA 02301",
+    "beds": "6",
+    "baths": [1, 0],
+    "square": 37,
+    "status": "1",
+    "l_days": 12,
+    "price": 182000,
+    "tags": "00100"
+  },
+  {
+    "id": "72206736",
+    "nm": "布罗克顿多家庭",
+    "loc": "417 Belmont St,  Brockton MA 02301",
+    "beds": "6",
+    "baths": [1, 0],
+    "square": 37,
+    "status": "1",
+    "l_days": 18,
+    "price": 498500,
+    "tags": "00100"
+  }
+]

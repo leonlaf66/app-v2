@@ -1,0 +1,160 @@
+<template>
+  <div class="page-house-purchase" v-if="isActive">
+    <HouseSearch 
+      :query="query"
+      @sort="onSort"
+      @q="onQInput"
+      @filters="onFileters"></HouseSearch>
+    <scroller
+      ref="scroller"
+      noDataText="没有了..."
+      :on-infinite="onInfinite">
+      <HouseList :items="results" style="margin-top:84px"></HouseList>
+      <div v-if="results.length === 0">&nbsp;</div>
+    </scroller>
+  </div>
+</template>
+
+<script>
+import HouseSearch from '@/components/HeaderHouseSearch'
+import HouseList from '@/components/HouseList'
+
+export default {
+  name: 'page-house-search',
+  data: function () {
+    return {
+      isActive: false,
+      position: null,
+      query: {
+        q: '',
+        filters: {
+          prop: ['MF', 'SF', 'CC']
+        },
+        sort: ['ldays', 'desc'],
+        page: 1
+      },
+      results: []
+    }
+  },
+  created () {
+    this.$store.dispatch('loading', true)
+    this.load().then(data => {
+      this.results = data.items
+      this.$store.dispatch('loading', false)
+    })
+  },
+  methods: {
+    load () {
+      let params = {
+        type: this.$route.params.type,
+        q: this.query.q,
+        filters: this.query.filters,
+        sort: this.query.sort,
+        page: this.query.page
+      }
+
+      return this.$houseApi('/house/search', { params }).then(data => {
+        if (data.items.length === 0) {
+          this.$refs.scroller.finishInfinite(2)
+        }
+        return data
+      })
+    },
+    refresh () {
+      this.setPage(1)
+      this.$store.dispatch('loading', true)
+      this.load().then(data => {
+        this.results = data.items
+        this.$store.dispatch('loading', false)
+        this.$refs.scroller.scrollTo(0, 0)
+      })
+    },
+    setPage (page) {
+      this.$set(this.query, 'page', page)
+    },
+    setFilters (filters) {
+      this.$set(this.query, 'filters', filters)
+    },
+    setSort (sort) {
+      this.$set(this.query, 'sort', sort)
+    },
+    resetSort () {
+      this.setSort(['ldays', 'desc'])
+    },
+    setQInput (q) {
+      this.$set(this.query, 'q', q)
+      this.setFilters({})
+    },
+    onInfinite (done) {
+      this.setPage(this.query.page + 1)
+      this.load().then(data => {
+        if (data.items.length === 0) return
+        this.results = this.results.concat(data.items)
+        done()
+      })
+    },
+    onQInput (text) {
+      this.setQInput(text)
+      this.resetSort()
+      this.refresh()
+    },
+    onSort (field, dir) {
+      this.setSort([field, dir])
+      this.refresh()
+    },
+    onFileters (filters) {
+      this.setFilters(filters)
+      this.refresh()
+    }
+  },
+  beforeRouteEnter (to, from, next) {
+    if (from.name === 'home') {
+      next(vm => {
+        vm.isActive = true
+        vm.setQInput('')
+        if (to.params.type === 'purchase') {
+          vm.setFilters({
+            prop: ['SF', 'MF', 'CC']
+          })
+        }
+        vm.resetSort()
+        vm.refresh()
+      })
+    } else if (from.name === 'house-detail') {
+      next(vm => {
+        vm.isActive = true
+        if (vm && vm.$refs.scroller) {
+          setTimeout(function () {
+            vm.$refs.scroller.scrollTo(0, vm.position, false)
+          }, 10)
+        }
+      })
+    } else {
+      next(vm => {
+        vm.isActive = true
+      })
+    }
+  },
+  beforeRouteLeave (to, from, next) {
+    if (to.name === 'house-detail') {
+      this.position = this.$refs.scroller && this.$refs.scroller.getPosition() && this.$refs.scroller.getPosition().top
+    } else {
+      this.isActive = false
+      this.setQInput('')
+      this.resetSort()
+      this.setPage(1)
+      this.results = []
+    }
+    next()
+  },
+  route: {
+    canReuse () {
+      return false
+    }
+  },
+  components: {
+    HouseSearch,
+    HouseList
+  }
+}
+</script>
