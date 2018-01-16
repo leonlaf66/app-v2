@@ -77,6 +77,7 @@ export default {
     text-align:center;
     background:#fff;
     border-bottom:solid 1px #eee;
+    height:220px;
     > img {
       display:inline-block;
       max-width:100%;

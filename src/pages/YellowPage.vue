@@ -11,7 +11,7 @@
         << {{ 'Return to Recommends' | $tt('回到推荐商家') }}
       </a>
     </h2>
-    <types :items="types" @selected="onTypeSelected"
+    <types v-if="types.length > 0" :items="types" @selected="onTypeSelected"
       class="types"></types>
 
     <results :items="items" style="margin-top:15px"></results>

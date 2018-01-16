@@ -71,7 +71,8 @@ export default {
     width: 100%;
     border: none;
     font-size: 13px;
-    height: 24px;
+    height: 26px;
+    line-height:26px;
     &:focus {
       outline:none;
     }
