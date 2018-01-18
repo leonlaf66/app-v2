@@ -1,7 +1,7 @@
 <template>
   <div class="page-more" v-once>
     <div class="box">
-      <img src="http://ma.usleju.cn/static/img/mobile-qr.png">
+      <img :src="qrImg">
       <p class="l1">长按识别二维码，下载APP</p>
       <p class="l2">www.usleju.com</p>
     </div>
@@ -10,7 +10,12 @@
 
 <script>
 export default {
-  name: 'page-more'
+  name: 'page-more',
+  computed: {
+    qrImg () {
+      return require('@/assets/mobile-qr.png')
+    }
+  }
 }
 </script>
 

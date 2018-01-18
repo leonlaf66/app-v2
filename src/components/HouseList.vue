@@ -7,19 +7,18 @@
             <span>{{ item.price | price }}</span>
           </div>
         </div>
-        <!--
-        <visual class="image" :image="item | image" background='cover'>
-          <div class="price">
-            <span>{{ item.price | price }}</span>
-          </div>
-        </visual>-->
         <div class="desc">
           <h2>{{ item.nm }}</h2>
           <div class="address">{{ item.loc }}</div>
           <div class="info">
-            <span>{{ item.beds }} {{ 'beds' | $tt('卧室') }}</span>
-            <span>{{ item.baths[0] }}.{{ item.baths[1] }} {{ 'baths' | $tt('洗手间') }}</span>
-            <span>{{ item.square | square }}</span>
+            <template v-if="item.prop !== 'LD'">
+              <span>{{ item.beds }} {{ 'beds' | $tt('卧室') }}</span>
+              <span>{{ item.baths[0] }}.{{ item.baths[1] }} {{ 'baths' | $tt('洗手间') }}</span>
+              <span>{{ item.square | square }}</span>
+            </template>
+            <template v-else>
+              <span>{{ item.lot_size | square }}</span>
+            </template>
           </div>
           <ul class="tags">
             <li class="red" v-if="isActive(item.status)">{{ 'Active' | $tt('销售中') }}</li>
@@ -51,9 +50,6 @@
     filters: {
       image (item) {
         return 'background-image:url(' + window.$house.getImageUrl(item.mls_id, item.id) + ')'
-      },
-      listDayDesc (days) {
-        return window.$tt(`${days} days on market`, `已上市${days}天`)
       }
     },
     created () {

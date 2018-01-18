@@ -1,5 +1,5 @@
 <template>
-  <div class="page-news" v-if="is_online">
+  <div class="page-news has-b-nav" v-if="is_online">
     <scroller
       ref="scroller"
       noDataText="该分类下没有新闻了"
@@ -123,7 +123,6 @@ export default {
 <style lang="scss">
 body.route-news{
   background:#fbf9fe;
-  padding-bottom:60px;
   .news-result {
     margin: 0 8px;
   }

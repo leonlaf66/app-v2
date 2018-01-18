@@ -1,5 +1,5 @@
 <template>
-  <div class="page-yellowpage">
+  <div class="page-yellowpage has-b-nav">
     <h2 class="vux-1px-b">
       <template v-if="currentTypeName">
         {{ 'Type' | $tt('类型') }}: {{ currentTypeName }}
@@ -68,6 +68,15 @@ export default {
     },
     loadTypeItems (typeId) {
       return this.$ypApi('list/' + typeId)
+    }
+  },
+  beforeRouteEnter (to, from, next) {
+    if (from.name !== 'yellowpage-detail') {
+      next(vm => {
+        vm.$scrollTop(0)
+      })
+    } else {
+      next()
     }
   },
   components: {

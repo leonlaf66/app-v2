@@ -1,7 +1,7 @@
 <template>
   <div class="my-top-banner" :style="bgStyle">
     <div class="logo">
-      <img src="/static/imgs/logo.png">
+      <img :src="logo">
     </div>
   </div>
 </template>
@@ -9,8 +9,11 @@
 <script>
 export default {
   computed: {
+    logo () {
+      return require('@/assets/logo2.png')
+    },
     bgStyle () {
-      return 'background-image: url(/static/imgs/my-bg.jpg)'
+      return 'background-image: url(' + require('@/assets/my-bg.jpg') + ')'
     }
   }
 }

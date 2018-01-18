@@ -67,5 +67,5 @@ export default {
 </script>
 
 <style scope>
-.weui-cells {margin-top:0 !important;}
+.news-type-selector .weui-cells {margin-top:0 !important;}
 </style>

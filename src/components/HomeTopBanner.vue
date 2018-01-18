@@ -1,5 +1,5 @@
 <template>
-  <div class="home-top">
+  <div class="home-top" :style="bgStyle">
     <div class="top-bar">
       <HouseArea></HouseArea>
     </div>
@@ -12,6 +12,11 @@ import HouseArea from '@/components/HouseArea'
 import Language from '@/components/Language'
 
 export default {
+  computed: {
+    bgStyle () {
+      return 'background-image:url(' + require('@/assets/home-top-bg.jpg') + ')'
+    }
+  },
   components: {
     HouseArea,
     Language
@@ -22,7 +27,6 @@ export default {
 <style lang="scss">
 .home-top {
   height:250px;
-  background-image: url(/static/imgs/home-top-bg.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   .top-bar {

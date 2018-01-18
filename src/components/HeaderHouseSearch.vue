@@ -12,7 +12,7 @@
               <autocomplete ref="qInput" v-model="q" @focus="onEntered()" @blue="onBlue" @confirm="onSearchConfirm">
               </autocomplete>
             </div>
-            <i class="iconfont icon-remove" @click="onClearSearchText()" v-if="isEntered && q !== ''"></i>
+            <!--<i class="iconfont icon-remove" @click="onClearSearchText()" v-if="isEntered && q !== ''"></i>-->
           </div>
         </div>
         <div class="right">

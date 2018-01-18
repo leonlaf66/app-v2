@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="house-area">
     <div class="area-location" @click="selectArea">
       <i class="iconfont icon-location"></i>
       <span>{{ currentAreaName }}</span>
@@ -74,5 +74,5 @@ export default {
 </script>
 
 <style scope>
-.weui-cells {margin-top:0 !important}
+.house-area .weui-cells {margin-top:0 !important}
 </style>

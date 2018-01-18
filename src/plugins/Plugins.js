@@ -20,6 +20,11 @@ export default {
       window.document.setDocumentTitle(title + '-' + window.$tt('Usleju', '米乐居'))
     }
 
+    Vue.prototype.$scrollTop = (val) => {
+      document.body.scrollTop = val
+      document.documentElement.scrollTop = val
+    }
+
     Vue.filter('price', (value) => {
       if (window.$lang === 'zh-CN') {
         if (parseFloat(value) > 10000) {
@@ -42,6 +47,13 @@ export default {
         return value + '平方米'
       }
       return value + 'Sq.Ft'
+    })
+
+    Vue.filter('listDayDesc', (value) => {
+      if (value === '0' || value === 0) {
+        return window.$tt('New listing', '当日上市')
+      }
+      return window.$tt(`${value} days on market`, `已上市${value}天`)
     })
 
     Vue.filter('fieldDisplay', (value) => {

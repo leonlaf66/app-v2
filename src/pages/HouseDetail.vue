@@ -12,31 +12,33 @@
           <div class="price lr-pad">{{ data.price | price }}</div>
         </div>
         <div class="table-info lr-pad">
-          <div class="item">
-            <label>{{ 'Type' | $tt('类型') }}</label>
-            <span>{{ data.prop | house-prop-name | $tt}}</span>
-          </div>
-          <div class="item">
-            <label>{{ 'Baths' | $tt('浴室') }}</label>
-            <span>{{ data.baths[0] }}.{{ data.baths[1] }}</span>
-          </div>
-          <div class="item">
-            <label>{{ 'Beds' | $tt('卧室') }}</label>
-            <span>{{ data.beds | field-display }}</span>
-          </div>
-          <div class="item">
-            <label>{{ 'Living Area' | $tt('居住面积') }}</label>
-            <span>{{ data.square_feet | square | field-display}}</span>
-          </div>
-          <div class="item">
-            <label>{{ 'Area' | $tt('区域') }}</label>
-            <span>{{ data.area | field-display}}</span>
-          </div>
+          <template v-if="data.prop !== 'LD'">
+            <div class="item">
+              <label>{{ 'Type' | $tt('类型') }}</label>
+              <span>{{ data.prop | house-prop-name | $tt}}</span>
+            </div>
+            <div class="item">
+              <label>{{ 'Baths' | $tt('浴室') }}</label>
+              <span>{{ data.baths[0] }}.{{ data.baths[1] }}</span>
+            </div>
+            <div class="item">
+              <label>{{ 'Beds' | $tt('卧室') }}</label>
+              <span>{{ data.beds | field-display }}</span>
+            </div>
+            <div class="item">
+              <label>{{ 'Living Area' | $tt('居住面积') }}</label>
+              <span>{{ data.square_feet | square | field-display}}</span>
+            </div>
+            <div class="item">
+              <label>{{ 'Area' | $tt('区域') }}</label>
+              <span>{{ data.area | field-display}}</span>
+            </div>
+          </template>
         </div>
       </div>
 
-      <div class="more-information vux-1px-tb" @click="onNearbiesView">
-        <a>{{ 'View Recommended Houses' | $tt('查看附近房源') }}</a>
+      <div class="more-information vux-1px-tb" @click="onNearbiesView" v-if="data.prop !== 'LD'">
+        <a class="red-text">{{ 'View Recommended Houses' | $tt('查看附近房源') }}</a>
         <i class="ft iconfont icon-right"></i>
       </div>
 
@@ -98,6 +100,7 @@ export default {
         this.loadGallery(data.mls_id, data.id, data.img_cnt)
         setTimeout(() => {
           this.$store.dispatch('loading', false)
+          this.$scrollTop(0)
         }, 400)
       })
     },

@@ -30,6 +30,15 @@ export default {
   created () {
     this.$store.dispatch('loadTopHouseItems')
   },
+  beforeRouteEnter (to, from, next) {
+    if (from.name !== 'house-detail') {
+      next(vm => {
+        vm.$scrollTop(0)
+      })
+    } else {
+      next()
+    }
+  },
   components: {
     HomeTopBanner,
     HomeMenu,
