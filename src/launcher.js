@@ -11,15 +11,27 @@ export default {
     }
 
     // 语言初始化
-    let language = cookie.get('language')
+    let language = null
+    let query = querystring.parse(window.location.search.substr(1))
+    if (query.hasOwnProperty('language')) {
+      if (['en-US', 'zh-CN'].indexOf(query.language) !== -1) {
+        language = query.language
+      }
+    }
+
+    if (!language) {
+      language = cookie.get('language')
+    }
+
     if (typeof language === 'undefined') {
       if ((window.navigator.language || window.navigator.userLanguage) === 'zh-CN') {
         language = 'zh-CN'
       } else {
         language = 'en-US'
       }
-      cookie.set('language', language)
     }
+
+    cookie.set('language', language)
     window.$lang = Vue.$lang = Vue.prototype.$lang = language
 
     // 语言方式
