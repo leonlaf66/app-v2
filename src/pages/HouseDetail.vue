@@ -6,34 +6,10 @@
     <Gallery ref="gallery"></Gallery>
     <template v-if="data.id">
       <div class="base-info">
-        <div class="header vux-1px-b">
+        <div class="header">
           <div class="name lr-pad">{{ data.nm }}</div>
           <div class="address lr-pad">{{ data.loc }}</div>
           <div class="price lr-pad">{{ data.price | price }}</div>
-        </div>
-        <div class="table-info lr-pad">
-          <template v-if="data.prop !== 'LD'">
-            <div class="item">
-              <label>{{ 'Type' | $tt('类型') }}</label>
-              <span>{{ data.prop | house-prop-name | $tt}}</span>
-            </div>
-            <div class="item">
-              <label>{{ 'Baths' | $tt('浴室') }}</label>
-              <span>{{ data.baths[0] }}.{{ data.baths[1] }}</span>
-            </div>
-            <div class="item">
-              <label>{{ 'Beds' | $tt('卧室') }}</label>
-              <span>{{ data.beds | field-display }}</span>
-            </div>
-            <div class="item">
-              <label>{{ 'Living Area' | $tt('居住面积') }}</label>
-              <span>{{ data.square_feet | square | field-display}}</span>
-            </div>
-            <div class="item">
-              <label>{{ 'Area' | $tt('区域') }}</label>
-              <span>{{ data.area | field-display}}</span>
-            </div>
-          </template>
         </div>
       </div>
 
@@ -56,7 +32,7 @@
 
     <nearbies ref="nearbies"></nearbies>
 
-    <!-- <FooterNav @item-click="handlerNavClick"></FooterNav> -->
+    <FooterNav @item-click="handlerNavClick"></FooterNav>
   </div>
 </template>
 
@@ -83,7 +59,7 @@ export default {
         return window.$tt('Unknown', '未提供')
       }
 
-      return (field.prefix ? field.prefix : '') + value + (field.suffix ? field.suffix : '')
+      return (field.prefix ? field.prefix + ' ' : '') + value + (field.suffix ? ' ' + field.suffix : '')
     }
   },
   created () {
@@ -143,14 +119,11 @@ export default {
   .base-info {
     background-color:#fff;
     padding-bottom:5px;
-    margin-top:10px;
+    margin-top:15px;
     .lr-pad {padding:0 5px;}
     .name {font-size:16px;font-weight:bold;margin-bottom:3px;}
     .address {color:#777;}
-    .price {margin:15px 0;height:28px;font-size:16px;color:red;}
-    .header {
-      margin-bottom:8px;
-    }
+    .price {padding:15px 5px;font-size:16px;color:red;}
     .table-info {
       font-size:0;
       .item {
@@ -174,7 +147,13 @@ export default {
       right: 5px;
       top: 8px;
       color: #C8C8CD;
-    } 
+    }
+  }
+
+  .grouped-details {
+    .weui-cells__title {
+      padding-left:5px;
+    }
   }
 
   .nearby-houses {

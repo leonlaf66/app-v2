@@ -1,5 +1,5 @@
 <template>
-  <div class="house-gallery" v-if="is_active" style="height:200px;background:#e6e6e6">
+  <div class="house-gallery" v-if="is_active" style="height:60vw;background:#e6e6e6">
     <carousel :watch-items="items">
         <carousel-item v-for="(item, index) in items" :key="item.url" >
             <div class="image" :style="'background-image:url(' + item.url + ')'"></div>
@@ -54,7 +54,7 @@ export default {
   .v-carousel-item {width:100%;float:left}
 
   .image {
-    height:200px;
+    height:60vw;
     background-repeat:no-repeat;
     background-size: cover;
     background-position: center center;
