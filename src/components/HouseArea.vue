@@ -6,10 +6,10 @@
     </div>
 
     <div v-transfer-dom>
-      <x-dialog v-model="showSelector" :hide-on-blur="true" class="dialog-demo">
+      <x-dialog  v-model="showSelector" :hide-on-blur="true" class="dialog-house-area">
         <h2 style="padding: 10px 0;
     background: #f0f0f0;
-    font-size: 16px;">请选择区域</h2>
+    font-size: 16px;">{{ 'Please select area' | $tt('请选择区域') }}</h2>
         <group>
           <radio :options="areaItems" @on-change="areaSelected">
             <template slot-scope="props" slot="each-item">
@@ -42,15 +42,22 @@ export default {
     areaItems () {
       let options = []
       for (let id in areas) {
-        options.push({
-          key: id,
-          value: window.$tt(areas[id].name)
-        })
+        if (id !== this.areaId) {
+          options.push({
+            key: id,
+            value: window.$tt(areas[id].name)
+          })
+        }
       }
       return options
     },
+    areaId () {
+      return this.$store.state.app.areaId
+    },
     currentAreaName () {
-      return this.$tt(areas[this.$areaId].name)
+      if (this.areaId) {
+        return this.$tt(areas[this.areaId].name)
+      }
     }
   },
   directives: {
@@ -62,7 +69,14 @@ export default {
     },
     areaSelected (areaId) {
       this.showSelector = false
-      this.$env.changeAreaId(areaId)
+      let params = {
+        area_id: areaId
+      }
+      this.$router.replace({
+        name: 'home',
+        params
+      })
+      this.$store.dispatch('changeArea', areaId)
     }
   },
   components: {
@@ -75,4 +89,5 @@ export default {
 
 <style scope>
 .house-area .weui-cells {margin-top:0 !important}
+.dialog-house-area .weui-cells {margin-top:0;}
 </style>

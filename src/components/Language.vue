@@ -9,13 +9,14 @@
 export default {
   computed: {
     language () {
-      return window.$lang
+      return this.$store.state.app.language
     }
   },
   methods: {
     switchLang () {
       let language = this.language === 'en-US' ? 'zh-CN' : 'en-US'
-      this.$env.changeLang(language)
+      this.$store.dispatch('changeLanguage', language)
+      // this.$env.changeLang(language)
     }
   }
 }

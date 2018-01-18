@@ -20,35 +20,35 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/:area_id',
       component: LayoutTop,
       children: [
         {
+          path: '/:area_id',
           name: 'home',
-          path: '/',
           meta: {keepAlive: true, title: ['Home', '首页']},
           component: PageHome
         },
         {
-          path: '/yellowpage',
+          path: '/:area_id/yellowpage',
           name: 'yellowpage',
           meta: {keepAlive: true, title: ['Service', '管房养房']},
           component: PageYellowPage
         },
         {
-          path: '/news',
+          path: '/:area_id/news',
           name: 'news',
           meta: {keepAlive: true, title: ['News', '新闻资讯']},
           component: PageNews
         },
         {
-          path: '/my',
+          path: '/:area_id/my',
           name: 'my',
           meta: {keepAlive: true, title: ['My', '我的']},
           component: PageMy
         },
         {
-          path: '/more',
+          path: '/:area_id/more',
           name: 'more',
           meta: {keepAlive: true, title: ['More', '更多']},
           component: PageMore
@@ -56,33 +56,33 @@ export default new Router({
       ]
     },
     {
-      path: '/school-district',
+      path: '/:area_id/school-district',
       name: 'school-district',
       component: PageSchoolDistrict
     },
     {
-      path: '/house/search/:type',
+      path: '/:area_id/house/search/:type',
       name: 'house-search',
       meta: { keepAlive: true },
       component: PageHouseSearch
     },
     {
-      path: '/house/:id',
+      path: '/:area_id/house/:id',
       name: 'house-detail',
       component: PageHouseDetail
     },
     {
-      path: '/news/:id',
+      path: '/:area_id/news/:id',
       name: 'news-view',
       component: PageNewsView
     },
     {
-      path: '/yellowpage/:id',
+      path: '/:area_id/yellowpage/:id',
       name: 'yellowpage-detail',
       component: PageYellowPageDetail
     },
     {
-      path: '/buy-house/flow',
+      path: '/:area_id/buy-house/flow',
       name: 'buy-house-flow',
       meta: {keepAlive: true, title: ['Workflow', '购房流程']},
       component: PageWorkflow

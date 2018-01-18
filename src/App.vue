@@ -18,8 +18,18 @@ import FooterNav from '@/components/FooterNav'
 export default {
   name: 'app',
   computed: {
+    lang () {
+      return this.$store.state.app.language
+    },
     isLoading () {
       return this.$store.state.app.isLoading
+    }
+  },
+  created () {
+    if (!this.$route.params.area_id) {
+      this.$router.replace({ name: 'home', params: { area_id: 'ma' } })
+    } else {
+      this.$store.commit('CHENGE_AREA', this.$route.params.area_id)
     }
   },
   directives: {

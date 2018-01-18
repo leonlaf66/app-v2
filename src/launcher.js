@@ -1,5 +1,6 @@
 import cookie from 'vux/src/tools/cookie'
 import querystring from 'querystring'
+import store from '@/vuex'
 
 export default {
   install: function (Vue, options) {
@@ -32,7 +33,7 @@ export default {
     }
 
     cookie.set('language', language)
-    window.$lang = Vue.$lang = Vue.prototype.$lang = language
+    store.commit('CHANGE_LANGUAGE', language)
 
     // 语言方式
     window.$tt = Vue.$tt = Vue.prototype.$tt = function (en, cn) {
@@ -45,28 +46,7 @@ export default {
           cn = en
         }
       }
-      return window.$lang === 'en-US' ? en : cn
-    }
-
-    // 房源区域
-    let areaId = cookie.get('area-id')
-    if (typeof areaId === 'undefined') {
-      areaId = 'ma'
-      cookie.set('area-id', areaId)
-    }
-    window.$areaId = Vue.$areaId = Vue.prototype.$areaId = areaId
-
-    Vue.prototype.$env = {
-      changeLang (lang) {
-        cookie.set('language', lang)
-        // window.$lang = Vue.$lang = Vue.prototype.$lang = lang
-        window.location.href = window.location.href.split('?')[0] + '?t=' + (new Date()).getTime()
-      },
-      changeAreaId (areaId) {
-        cookie.set('area-id', areaId)
-        // window.$areaId = Vue.$areaId = Vue.prototype.$areaId = areaId
-        window.location.href = window.location.href.split('?')[0] + '?t=' + (new Date()).getTime()
-      }
+      return store.state.app.language === 'en-US' ? en : cn
     }
   }
 }

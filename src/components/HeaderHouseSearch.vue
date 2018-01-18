@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="right">
-          <template v-if="isEntered">
+          <template v-if="isEntered && qTextFocus">
             <a @click="onSearchConfirm">{{ 'SEARCH' | $tt('搜索') }}</a>
           </template>
           <template v-else>
@@ -368,8 +368,9 @@ export default {
 }
 body.en-US .header-house-search {
   .middle {
-    left:37px;
-    right:65px;
+    &.focus {
+      right:62px;
+    }
   }
   .search-input-inner .right {
     right:14px;

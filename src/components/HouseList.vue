@@ -49,7 +49,11 @@
     },
     filters: {
       image (item) {
-        return 'background-image:url(' + window.$house.getImageUrl(item.mls_id, item.id) + ')'
+        let imgUrl = window.$house.getImageUrl(item.mls_id, item.id)
+        if (imgUrl) {
+          return 'background-image:url(' + window.$house.getImageUrl(item.mls_id, item.id) + ')'
+        }
+        return ''
       }
     },
     created () {

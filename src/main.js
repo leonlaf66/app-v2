@@ -8,7 +8,6 @@ import Vue2Filters from 'vue2-filters'
 import Plugins from '@/plugins/Plugins'
 import Launcher from '@/launcher.js'
 import Api from '@/tools/api.js'
-// import VueVisual from 'vue-visual'
 import VueScroller from 'vue-scroller'
 import store from '@/vuex/index.js'
 import VueBgSrc from 'vue-bg-src'
@@ -22,9 +21,8 @@ Vue.use(VueScroller)
 Vue.use(AjaxPlugin)
 Vue.use(VueRouter)
 Vue.use(Plugins)
-Vue.use(Launcher)
-Vue.use(Api)
-// Vue.component('visual', VueVisual)
+Vue.use(Launcher, { router })
+Vue.use(Api, { router })
 Vue.use(VueBgSrc)
 
 FastClick.attach(document.body)
@@ -50,7 +48,7 @@ window.document.setDocumentTitle = function (title) {
 }
 
 router.afterEach((to, from) => {
-  window.document.body.className = ' route-' + to.name + ' ' + window.$lang
+  window.document.body.className = ' route-' + to.name + ' ' + store.state.app.language
   let title = window.$tt('Usleju', '米乐居')
   if (typeof to.meta.title !== 'undefined') {
     title = window.$tt(to.meta.title) + '-' + title

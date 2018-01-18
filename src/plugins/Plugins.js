@@ -1,4 +1,5 @@
 import numberComma from 'vux/src/tools/number/comma.js'
+import store from '@/vuex'
 
 export default {
   install (Vue, options) {
@@ -83,9 +84,10 @@ export default {
 
     window.$house = Vue.prototype.$house = {
       getImageUrl (mlsId, id, idx = 0, w = 800, h = 800) {
-        if (window.$areaId === 'ma') {
+        if (store.state.app.areaId === 'ma') {
           return `http://media.mlspin.com/Photo.aspx?mls=${id}&n=${idx}&w=800&h=800`
         } else {
+          if (!mlsId) return null
           return `http://photos.listhub.net/${mlsId}/${id}/${idx + 1}`
         }
       }
