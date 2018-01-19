@@ -8,8 +8,9 @@
     <scroller
       ref="scroller"
       noDataText="没有了..."
-      :on-infinite="onInfinite">
-      <HouseList :items="results" style="margin-top:84px"></HouseList>
+      :on-infinite="onInfinite"
+      style="top:86px;height:auto;bottom:0">
+      <HouseList :items="results" ></HouseList>
       <div v-if="results.length === 0">&nbsp;</div>
     </scroller>
   </div>
@@ -158,3 +159,7 @@ export default {
   }
 }
 </script>
+
+<style>
+.page-house-purchase .house-list {margin-bottom:20px}
+</style>
