@@ -1,4 +1,3 @@
-import numberComma from 'vux/src/tools/number/comma.js'
 import store from '@/vuex'
 
 export default {
@@ -28,12 +27,12 @@ export default {
     Vue.filter('price', (value) => {
       if (store.state.app.language === 'zh-CN') {
         if (parseFloat(value) > 10000) {
-          return `${numberComma(value / 10000.0)}万美元`
+          return `${numeral(value / 10000.0).format('0,0.00')}万美元`
         }
-        return `${numberComma(value)}美元`
+        return `${numeral(value).format('0,0')}美元`
       }
 
-      return '$' + `${numberComma(value)}`
+      return '$' + `${numeral(value).format('0,0')}`
     })
 
     Vue.filter('square', (value) => {
