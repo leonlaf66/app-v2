@@ -44,6 +44,13 @@ export default {
       this.show = false
     }
   },
+  watch: {
+    show (val) {
+      if (val === false) {
+        this.items = []
+      }
+    }
+  },
   components: {
     Popup,
     XHeader,
