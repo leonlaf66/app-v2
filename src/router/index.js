@@ -1,19 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import LayoutTop from '@/layouts/Top'
-import PageHome from '@/pages/Home'
-import PageYellowPage from '@/pages/YellowPage'
-import PageNews from '@/pages/News'
-import PageMy from '@/pages/My'
-import PageMore from '@/pages/More'
-import PageSchoolDistrict from '@/pages/SchoolDistrict'
-import PageHouseSearch from '@/pages/HouseSearch'
-import PageHouseDetail from '@/pages/HouseDetail'
-import PageNewsView from '@/pages/news/View'
-import PageYellowPageDetail from '@/pages/YellowPageDetail'
-import PageWorkflow from '@/pages/BuyHouseFlow'
-
 Vue.use(Router)
 
 export default new Router({
@@ -21,71 +8,71 @@ export default new Router({
   routes: [
     {
       path: '/:area_id',
-      component: LayoutTop,
+      component: () => import('@/layouts/Top'),
       children: [
         {
           path: '/:area_id',
           name: 'home',
           meta: {keepAlive: true, title: ['Home', '首页']},
-          component: PageHome
+          component: () => import('@/pages/Home')
         },
         {
           path: '/:area_id/yellowpage',
           name: 'yellowpage',
           meta: {keepAlive: true, title: ['Service', '管房养房']},
-          component: PageYellowPage
+          component: () => import('@/pages/YellowPage')
         },
         {
           path: '/:area_id/news',
           name: 'news',
           meta: {keepAlive: true, title: ['News', '新闻资讯']},
-          component: PageNews
+          component: () => import('@/pages/News')
         },
         {
           path: '/:area_id/my',
           name: 'my',
           meta: {keepAlive: true, title: ['My', '我的']},
-          component: PageMy
+          component: () => import('@/pages/My')
         },
         {
           path: '/:area_id/more',
           name: 'more',
           meta: {keepAlive: true, title: ['More', '更多']},
-          component: PageMore
+          component: () => import('@/pages/More')
         }
       ]
     },
     {
       path: '/:area_id/school-district',
       name: 'school-district',
-      component: PageSchoolDistrict
+      component: () => import('@/pages/SchoolDistrict')
     },
     {
       path: '/:area_id/house/search/:type',
       name: 'house-search',
       meta: { keepAlive: true },
-      component: PageHouseSearch
+      component: () => import('@/pages/HouseSearch')
     },
     {
       path: '/:area_id/house/:id',
       name: 'house-detail',
-      component: PageHouseDetail
+      component: () => import('@/pages/HouseDetail')
     },
     {
       path: '/:area_id/news/:id',
       name: 'news-view',
-      component: PageNewsView
+      component: () => import('@/pages/news/View')
     },
     {
       path: '/:area_id/yellowpage/:id',
       name: 'yellowpage-detail',
-      component: PageYellowPageDetail
+      component: () => import('@/pages/YellowPageDetail')
     },
     {
       path: '/:area_id/buy-house/flow',
       name: 'buy-house-flow',
       meta: {keepAlive: true, title: ['Workflow', '购房流程']},
-      component: PageWorkflow
+      component: () => import('@/pages/BuyHouseFlow')
     }
   ]
 })

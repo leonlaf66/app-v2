@@ -47,9 +47,11 @@ export default {
   },
   methods: {
     load () {
+      this.$store.dispatch('loading', true)
       this.$ypApi(`item/` + this.$route.params.id).then(data => {
         this.$setPageTitle(data.name)
         this.data = data
+        this.$store.dispatch('loading', false)
       })
     }
   },

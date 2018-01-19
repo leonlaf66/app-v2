@@ -11,8 +11,8 @@ export default {
   },
   actions: {
     loadTopHouseItems ({ commit, dispatch }) {
-      dispatch('loading', true)
       this.items = []
+      dispatch('loading', true)
       return Vue.houseApi('/house/top/items').then(items => {
         commit('setTopHouseItems', items)
         dispatch('loading', false)

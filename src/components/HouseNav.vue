@@ -37,7 +37,7 @@
               {{ 'Contact Us' | $tt('联系我们') }}
             </div>
           </div>
-          <cell v-for="item in contactItems" :title="item.title | $tt" :value="item.value" :key="item.title"></cell>
+          <cell v-for="item in contactItems" :title="item.title | $tt" :value="item.value" :key="item.title[0]"></cell>
         </group>
       </popup>
     </div>
@@ -57,20 +57,20 @@ export default {
       showContactUs: false,
       contactItems: [
         {
-          'title': ['Mobile', '移动电话'],
-          'value': '+086 15680728360'
+          title: ['Mobile', '移动电话'],
+          value: '+086 15680728360'
         },
         {
-          'title': ['Tel', '座机'],
-          'value': '888-610-3288'
+          title: ['Tel', '座机'],
+          value: '888-610-3288'
         },
         {
-          'title': ['Email', '邮箱'],
-          'value': 'contact@usleju.com'
+          title: ['Email', '邮箱'],
+          value: 'contact@usleju.com'
         },
         {
-          'title': ['WeChat', '微信ID'],
-          'value': 'woniuusa'
+          title: ['WeChat', '微信ID'],
+          value: 'woniuusa'
         }
       ]
     }

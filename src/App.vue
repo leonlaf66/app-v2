@@ -26,10 +26,16 @@ export default {
     }
   },
   created () {
-    if (!this.$route.params.area_id) {
-      this.$router.replace({ name: 'home', params: { area_id: 'ma' } })
-    } else {
-      this.$store.commit('CHENGE_AREA', this.$route.params.area_id)
+    this.initArea()
+  },
+  methods: {
+    initArea () {
+      let areaId = window.location.pathname.substring(1, 3)
+      if (['ma', 'ca', 'ga', 'ny', 'il'].indexOf(areaId) !== -1) {
+        this.$store.commit('CHENGE_AREA', areaId)
+      } else {
+        this.$router.replace({ name: 'home', params: { area_id: 'ma' } })
+      }
     }
   },
   directives: {

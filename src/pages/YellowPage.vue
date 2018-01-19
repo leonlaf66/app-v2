@@ -56,10 +56,8 @@ export default {
     },
     onReturnTop () {
       this.currentTypeName = null
-      this.$store.dispatch('loading', true)
       this.loadTopItems().then(data => {
         this.items = data.topItems
-        this.$store.dispatch('loading', false)
         this.loading = false
       })
     },

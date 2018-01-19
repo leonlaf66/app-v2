@@ -61,13 +61,11 @@ export default {
         page: this.page
       }
 
-      this.$store.dispatch('loading', true)
       return this.$newsApi('list', { params })
         .then(data => {
           if (data.items.length === 0) {
             this.$refs.scroller.finishInfinite(2)
           }
-          this.$store.dispatch('loading', false)
           return data
         })
     },
@@ -82,8 +80,10 @@ export default {
     onTypeChanged (id) {
       this.page = 1
       this.currentTypeId = id
+      this.$store.dispatch('loading', true)
       this.loadNews().then(data => {
         this.items = data.items
+        this.$store.dispatch('loading', false)
       })
     }
   },

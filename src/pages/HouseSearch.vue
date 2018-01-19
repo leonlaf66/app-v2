@@ -38,10 +38,8 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('loading', true)
     this.load().then(data => {
       this.results = data.items
-      this.$store.dispatch('loading', false)
     })
   },
   methods: {
@@ -54,20 +52,22 @@ export default {
         page: this.query.page
       }
 
+      this.$store.dispatch('loading', true)
       return this.$houseApi('/house/search', { params }).then(data => {
-        if (data.items.length === 0) {
+        if (data.items.length === 0 && this.$refs.scroller) {
           this.$refs.scroller.finishInfinite(2)
         }
+        this.$store.dispatch('loading', false)
         return data
       })
     },
     refresh () {
       this.setPage(1)
-      this.$store.dispatch('loading', true)
       this.load().then(data => {
         this.results = data.items
-        this.$store.dispatch('loading', false)
-        this.$refs.scroller.scrollTo(0, 0)
+        if (this.$refs.scroller) {
+          this.$refs.scroller.scrollTo(0, 0)
+        }
       })
     },
     setPage (page) {

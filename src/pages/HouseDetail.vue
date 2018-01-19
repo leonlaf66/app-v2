@@ -63,7 +63,6 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('loading', true)
     this.loadData(this.$route.params.id)
   },
   methods: {
@@ -75,9 +74,9 @@ export default {
         this.data = data
         this.loadGallery(data.mls_id, data.id, data.img_cnt)
         setTimeout(() => {
-          this.$store.dispatch('loading', false)
           this.$scrollTop(0)
         }, 400)
+        this.$store.dispatch('loading', false)
       })
     },
     loadGallery (mlsId, listNo, imgCnt) {
