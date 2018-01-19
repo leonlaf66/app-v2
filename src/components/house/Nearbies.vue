@@ -34,8 +34,10 @@ export default {
   methods: {
     setShow (id) {
       this.show = true
+      this.$store.dispatch('loading', true)
       this.$houseApi(`house/${id}/nearbiy`).then(items => {
         this.items = items
+        this.$store.dispatch('loading', false)
       })
     },
     setHidden () {
