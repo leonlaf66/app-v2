@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div v-transfer-dom>
-      <loading v-model="isLoading"></loading>
+      <loading v-model="isLoading" :text="'Loading' | $tt('加载中')"></loading>
     </div>
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive"></router-view>
