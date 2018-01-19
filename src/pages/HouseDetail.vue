@@ -116,6 +116,7 @@ export default {
 
 <style lang="scss">
 .page-house-detail {
+  margin-bottom: 57px;
   .base-info {
     background-color:#fff;
     padding-bottom:5px;
