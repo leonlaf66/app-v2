@@ -13,7 +13,6 @@ import store from '@/vuex/index.js'
 import VueBgSrc from 'vue-bg-src'
 
 require('@/styles/reset.scss')
-require('vue-visual/index.css')
 require('@/styles/styles.scss')
 
 Vue.use(Vue2Filters)
