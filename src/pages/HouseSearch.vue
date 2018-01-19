@@ -138,7 +138,9 @@ export default {
   },
   beforeRouteLeave (to, from, next) {
     if (to.name === 'house-detail') {
-      this.position = this.$refs.scroller && this.$refs.scroller.getPosition() && this.$refs.scroller.getPosition().top
+      if (this.$refs.scroller) {
+        this.position = this.$refs.scroller.getPosition().top
+      }
     } else {
       this.isActive = false
       this.setQInput('')

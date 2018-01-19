@@ -8,7 +8,7 @@ import Vue2Filters from 'vue2-filters'
 import Plugins from '@/plugins/Plugins'
 import Launcher from '@/launcher.js'
 import Api from '@/tools/api.js'
-// import VueScroller from 'vue-scroller'
+import VueScroller from 'vue-scroller'
 import store from '@/vuex/index.js'
 import VueBgSrc from 'vue-bg-src'
 
@@ -16,7 +16,7 @@ require('@/styles/reset.scss')
 require('@/styles/styles.scss')
 
 Vue.use(Vue2Filters)
-// Vue.use(VueScroller)
+Vue.use(VueScroller)
 Vue.use(AjaxPlugin)
 Vue.use(VueRouter)
 Vue.use(Plugins)
