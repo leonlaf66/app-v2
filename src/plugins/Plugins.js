@@ -3,7 +3,6 @@ import store from '@/vuex'
 
 export default {
   install (Vue, options) {
-    window.$lang = 'zh-CN'
     window.$tt = Vue.$tt = Vue.prototype.$tt = (en, cn) => {
       if (en instanceof Array) {
         if (en.length > 1) {
@@ -14,7 +13,7 @@ export default {
           cn = en
         }
       }
-      return window.$lang === 'en-US' ? en : cn
+      return store.state.app.language === 'en-US' ? en : cn
     }
 
     Vue.prototype.$setPageTitle = (title) => {
@@ -27,7 +26,7 @@ export default {
     }
 
     Vue.filter('price', (value) => {
-      if (window.$lang === 'zh-CN') {
+      if (store.state.app.language === 'zh-CN') {
         if (parseFloat(value) > 10000) {
           return `${numberComma(value / 10000.0)}万美元`
         }
@@ -43,7 +42,7 @@ export default {
       }
 
       value = parseFloat(value)
-      if (window.$lang === 'zh-CN') {
+      if (store.state.app.language === 'zh-CN') {
         value = parseInt(value * 0.092903)
         return value + '平方米'
       }
