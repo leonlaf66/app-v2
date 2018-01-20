@@ -32,7 +32,7 @@
 
     <nearbies ref="nearbies"></nearbies>
 
-    <FooterNav @item-click="handlerNavClick"></FooterNav>
+    <buttom-nav @item-click="handlerNavClick"></buttom-nav>
   </div>
 </template>
 
@@ -40,10 +40,10 @@
 import XHeader from 'vux/src/components/x-header'
 import Group from 'vux/src/components/group'
 import Cell from 'vux/src/components/cell'
-import Gallery from '@/components/HouseGallery'
-import HouseList from '@/components/HouseList'
-import Nearbies from '@/components/house/Nearbies'
-import FooterNav from '@/components/HouseNav'
+import HouseList from '@/components/house/list'
+import Nearbies from '@/components/house/nearbies'
+import Gallery from './detail/gallery'
+import ButtomNav from './detail/bottomNav'
 
 export default {
   data () {
@@ -108,7 +108,7 @@ export default {
     Gallery,
     HouseList,
     Nearbies,
-    FooterNav
+    ButtomNav
   }
 }
 </script>

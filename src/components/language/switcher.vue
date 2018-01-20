@@ -16,7 +16,6 @@ export default {
     switchLang () {
       let language = this.language === 'en-US' ? 'zh-CN' : 'en-US'
       this.$store.dispatch('changeLanguage', language)
-      // this.$env.changeLang(language)
     }
   }
 }

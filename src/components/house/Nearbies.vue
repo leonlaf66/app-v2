@@ -18,7 +18,7 @@
 import Popup from 'vux/src/components/popup'
 import TransferDom from 'vux/src/directives/transfer-dom'
 import XHeader from 'vux/src/components/x-header'
-import HouseList from '@/components/HouseList'
+import HouseList from '@/components/house/list'
 
 export default {
   props: ['value'],

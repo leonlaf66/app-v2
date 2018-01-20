@@ -14,65 +14,60 @@ export default new Router({
           path: '/:area_id',
           name: 'home',
           meta: {keepAlive: true, title: ['Home', '首页']},
-          component: () => import('@/pages/Home')
+          component: () => import('@/pages/home/index')
         },
         {
           path: '/:area_id/yellowpage',
           name: 'yellowpage',
           meta: {keepAlive: true, title: ['Service', '管房养房']},
-          component: () => import('@/pages/YellowPage')
+          component: () => import('@/pages/yellowpage/index')
         },
         {
           path: '/:area_id/news',
           name: 'news',
           meta: {keepAlive: true, title: ['News', '新闻资讯']},
-          component: () => import('@/pages/News')
+          component: () => import('@/pages/news/index')
         },
         {
           path: '/:area_id/my',
           name: 'my',
           meta: {keepAlive: true, title: ['My', '我的']},
-          component: () => import('@/pages/My')
+          component: () => import('@/pages/my/index')
         },
         {
           path: '/:area_id/more',
           name: 'more',
           meta: {keepAlive: true, title: ['More', '更多']},
-          component: () => import('@/pages/More')
+          component: () => import('@/pages/more/index')
         }
       ]
-    },
-    {
-      path: '/:area_id/school-district',
-      name: 'school-district',
-      component: () => import('@/pages/SchoolDistrict')
     },
     {
       path: '/:area_id/house/search/:type',
       name: 'house-search',
       meta: { keepAlive: true },
-      component: () => import('@/pages/HouseSearch')
+      component: () => import('@/pages/house/search')
     },
     {
       path: '/:area_id/house/:id',
       name: 'house-detail',
-      component: () => import('@/pages/HouseDetail')
+      component: () => import('@/pages/house/detail')
     },
     {
       path: '/:area_id/news/:id',
       name: 'news-view',
-      component: () => import('@/pages/news/View')
+      component: () => import('@/pages/news/view')
     },
     {
       path: '/:area_id/yellowpage/:id',
       name: 'yellowpage-detail',
-      component: () => import('@/pages/YellowPageDetail')
+      component: () => import('@/pages/yellowpage/view')
     },
     {
       path: '/:area_id/buy-house/flow',
       name: 'buy-house-flow',
       meta: {keepAlive: true, title: ['Workflow', '购房流程']},
-      component: () => import('@/pages/BuyHouseFlow')
+      component: () => import('@/pages/house/workflow')
     }
   ]
 })

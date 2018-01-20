@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import FooterNav from '@/components/FooterNav'
+import FooterNav from '@/components/footerNav'
 
 export default {
   components: {

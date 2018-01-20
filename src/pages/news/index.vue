@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import Banner from '@/components/news/Banner'
-import Types from '@/components/news/TypeSelector'
-import Results from '@/components/news/List'
+import Banner from '@/components/news/banner'
+import Types from '@/components/news/type/selector'
+import Results from '@/components/news/list'
 
 export default {
   name: 'page-news',

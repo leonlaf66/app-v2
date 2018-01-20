@@ -1,24 +1,24 @@
 <template>
   <div class="page-house-purchase" v-if="isActive">
-    <HouseSearch 
+    <search-header 
       :query="query"
       @sort="onSort"
       @q="onQInput"
-      @filters="onFileters"></HouseSearch>
+      @filters="onFileters"></search-header>
     <scroller
       ref="scroller"
       noDataText="没有了..."
       :on-infinite="onInfinite"
       style="top:86px;height:auto;bottom:0">
-      <HouseList :items="results" ></HouseList>
+      <result-list :items="results" ></result-list>
       <div v-if="results.length === 0">&nbsp;</div>
     </scroller>
   </div>
 </template>
 
 <script>
-import HouseSearch from '@/components/HeaderHouseSearch'
-import HouseList from '@/components/HouseList'
+import SearchHeader from './search/header'
+import ResultList from '@/components/house/list'
 
 export default {
   name: 'page-house-search',
@@ -156,8 +156,8 @@ export default {
     }
   },
   components: {
-    HouseSearch,
-    HouseList
+    SearchHeader,
+    ResultList
   }
 }
 </script>

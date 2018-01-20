@@ -1,9 +1,9 @@
 <template>
-  <div class="house-area">
-    <div class="area-location" @click="selectArea">
+  <div class="area-switcher">
+    <a class="location" @click="selectArea">
       <i class="iconfont icon-location"></i>
       <span>{{ currentAreaName }}</span>
-    </div>
+    </a>
 
     <div v-transfer-dom>
       <x-dialog  v-model="showSelector" :hide-on-blur="true" class="dialog-house-area">
@@ -87,7 +87,15 @@ export default {
 }
 </script>
 
-<style scope>
-.house-area .weui-cells {margin-top:0 !important}
+<style lang="scss">
+.area-switcher {
+  .location {
+    display:inline-block;
+    padding:9px 10px;
+    font-size:15px;
+    color:#fff;
+  }
+  .weui-cells {margin-top:0 !important}
+}
 .dialog-house-area .weui-cells {margin-top:0;}
 </style>

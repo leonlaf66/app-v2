@@ -13,7 +13,7 @@
 <script>
 import TransferDom from 'vux/src/directives/transfer-dom/index.js'
 import Loading from 'vux/src/components/loading'
-import FooterNav from '@/components/FooterNav'
+import FooterNav from '@/components/footerNav'
 
 export default {
   name: 'app',

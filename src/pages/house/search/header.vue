@@ -48,13 +48,13 @@
       </ul>
     </div>
 
-    <HouseFilters ref="filter" @confirmed="onFiltersConfirmed"></HouseFilters>
+    <result-filter ref="filter" @confirmed="onFiltersConfirmed"></result-filter>
   </div>
 </template>
 
 <script>
-import HouseFilters from '@/components/HouseFilters'
-import Autocomplete from '@/components/HouseSearchInput'
+import ResultFilter from './filter'
+import Autocomplete from './q-input'
 
 export default {
   name: 'header-house-search',
@@ -213,7 +213,7 @@ export default {
     }
   },
   components: {
-    HouseFilters,
+    ResultFilter,
     Autocomplete
   }
 }
