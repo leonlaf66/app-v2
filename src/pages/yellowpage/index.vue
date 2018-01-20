@@ -24,8 +24,8 @@
 
 <script>
 import XHeader from 'vux/src/components/x-header'
-import Types from '@/components/yellowpage/Types'
-import Results from '@/components/yellowpage/List'
+import Types from '@/components/yellowpage/types'
+import Results from '@/components/yellowpage/list'
 
 export default {
   data () {
