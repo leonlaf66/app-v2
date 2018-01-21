@@ -12,8 +12,8 @@
           <div class="address">{{ item.loc }}</div>
           <div class="info">
             <template v-if="item.prop !== 'LD'">
-              <span>{{ 'beds' | $tt('卧室') }} {{ item.beds }}</span>
-              <span>{{ 'baths' | $tt('卫生间') }} {{ item.baths | baths }} </span>
+              <span>{{ 'Beds' | $tt('卧室') }} {{ item.beds }}</span>
+              <span>{{ 'Baths' | $tt('卫生间') }} {{ item.baths | baths }} </span>
               <span>{{ item.square | square }}</span>
             </template>
             <template v-else>
