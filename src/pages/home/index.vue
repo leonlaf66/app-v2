@@ -70,5 +70,8 @@ export default {
       top: 5px;
     }
   }
+  .recommended-houses {
+    margin-top:20px;
+  }
 }
 </style>

@@ -48,6 +48,17 @@ export default {
       return value + 'Sq.Ft'
     })
 
+    Vue.filter('baths', (value) => {
+      let items = []
+      if (parseInt(value[0])) {
+        items.push(store.state.app.language === 'zh-CN' ? value[0] + '全' : value[0] + 'F')
+      }
+      if (parseInt(value[1])) {
+        items.push(store.state.app.language === 'zh-CN' ? value[1] + '半' : value[1] + 'H')
+      }
+      return items.join(' ')
+    })
+
     Vue.filter('listDayDesc', (value) => {
       if (value === '0' || value === 0) {
         return window.$tt('New listing', '当日上市')
