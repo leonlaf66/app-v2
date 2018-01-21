@@ -2,21 +2,28 @@
   <div class="house-gallery" v-if="is_active" style="height:60vw;background:#e6e6e6">
     <carousel :watch-items="items">
         <carousel-item v-for="(item, index) in items" :key="item.url" >
-            <div class="image" :style="'background-image:url(' + item.url + ')'"></div>
+            <div class="image" :style="'background-image:url(' + item.url + ')'" @click="onPreviewerWith(index)"></div>
         </carousel-item>
     </carousel>
+
+    <div v-transfer-dom>
+      <previewer :list="previewerItems" ref="previewer"></previewer>
+    </div>
   </div>
 </template>
 
 <script>
 import { Carousel, CarouselItem } from 'vue-l-carousel'
+import TransferDom from 'vux/src/directives/transfer-dom'
+import Previewer from 'vux/src/components/previewer'
 
 export default {
   name: 'house-gallery',
   data () {
     return {
       is_active: false,
-      items: []
+      items: [],
+      previewerItems: []
     }
   },
   methods: {
@@ -27,8 +34,17 @@ export default {
         this.items.push({
           'url': this.$house.getImageUrl(mlsId, listNo, i)
         })
+        this.previewerItems.push({
+          'src': this.$house.getImageUrl(mlsId, listNo, i)
+        })
       }
+    },
+    onPreviewerWith (idx) {
+      this.$refs.previewer.show(idx)
     }
+  },
+  directives: {
+    TransferDom
   },
   beforeDestroy () {
     this.is_active = false
@@ -36,7 +52,8 @@ export default {
   },
   components: {
     Carousel,
-    CarouselItem
+    CarouselItem,
+    Previewer
   }
 }
 </script>
