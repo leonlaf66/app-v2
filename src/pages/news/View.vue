@@ -42,7 +42,7 @@ export default {
       if (window.history.length > 1) {
         this.$router.back()
       } else {
-        this.$router.push({name: 'home'})
+        this.$router.push({name: 'news'})
       }
     }
   },
