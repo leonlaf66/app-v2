@@ -35,9 +35,9 @@
     </template>
 
     <!--地图-->
-    <div v-transfer-dom>
-      <popup class="map-popup" v-model="showMap" position="bottom">
-        <house-map style="height:80vh;" :loc="{lat: Number(data.latlng[0]), lng: Number(data.latlng[1])}" v-if="data.latlng && showMap"></house-map>
+    <div v-transfer-dom @touchmove.prevent @scroll.prevent>
+      <popup class="map-popup" v-model="showMap" position="bottom" style="top:40px">
+        <house-map :loc="{lat: Number(data.latlng[0]), lng: Number(data.latlng[1])}" v-if="data.latlng && showMap"></house-map>
       </popup>
     </div>
 

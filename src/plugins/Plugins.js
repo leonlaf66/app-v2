@@ -91,6 +91,37 @@ export default {
       return Vue.$tt(en, cn)
     })
 
+    Vue.component('RemoteScript', {
+      render: function (createElement) {
+        var self = this
+        return createElement('script', {
+          attrs: {
+            type: 'text/javascript',
+            src: self.src
+          },
+          on: {
+            load: function (event) {
+              self.$emit('load', event)
+            },
+            error: function (event) {
+              self.$emit('error', event)
+            },
+            readystatechange: function (event) {
+              if (this.readyState === 'complete') {
+                self.$emit('load', event)
+              }
+            }
+          }
+        })
+      },
+      props: {
+        src: {
+          type: String,
+          required: true
+        }
+      }
+    })
+
     window.$house = Vue.prototype.$house = {
       getImageUrl (mlsId, id, idx = 0, w = 800, h = 800) {
         if (store.state.app.areaId === 'ma') {

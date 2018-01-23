@@ -25,8 +25,8 @@ Vue.use(Api)
 Vue.use(VueBgSrc)
 
 FastClick.attach(document.body)
-
 Vue.config.productionTip = false
+
 /**
  * 兼容微信设置页面的title
  */
