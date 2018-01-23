@@ -110,7 +110,7 @@ export default {
       //
     },
     onClickBack () {
-      if (window.history.length > 0) {
+      if (window.history.length > 1) {
         this.$router.back()
       } else {
         this.$router.push({name: 'home'})

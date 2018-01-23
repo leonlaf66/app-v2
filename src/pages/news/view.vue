@@ -39,8 +39,7 @@ export default {
       return this.$newsApi(`item/${id}`)
     },
     onClickBack () {
-      alert(window.history.length)
-      if (window.history.length > 0) {
+      if (window.history.length > 1) {
         this.$router.back()
       } else {
         this.$router.push({name: 'home'})
