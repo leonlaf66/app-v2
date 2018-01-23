@@ -1,7 +1,7 @@
 <template>
   <div class="page-house-detail has-fixed-header">
     <!--顶部导航-->
-    <x-header class="fixed" :left-options="{backText: $tt('RETURN', '返回')}">
+    <x-header class="fixed" :left-options="{backText: $tt('RETURN', '返回'), preventGoBack: true}" @on-click-back="onClickBack">
       <!-- <a slot="right">收藏</a> -->
       <a slot="right" class="iconfont icon-marker" style="font-size:26px" @click="onViewMap" v-if="data.latlng"></a>
     </x-header>
@@ -108,6 +108,13 @@ export default {
     },
     handlerNavClick (type) {
       //
+    },
+    onClickBack () {
+      if (window.history.length > 0) {
+        this.$router.back()
+      } else {
+        this.$router.push({name: 'home'})
+      }
     }
   },
   beforeDestroy () {

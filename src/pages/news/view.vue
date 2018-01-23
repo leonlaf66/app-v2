@@ -1,6 +1,6 @@
 <template>
   <div class="page-news-view has-fixed-header">
-    <x-header class="fixed"></x-header>
+    <x-header class="fixed" :left-options="{backText: $tt('RETURN', '返回'), preventGoBack: true}" @on-click-back="onClickBack"></x-header>
     <div class="news-view">
       <div class="view-head">
         <h1>{{ data.title }}</h1>
@@ -37,6 +37,13 @@ export default {
   methods: {
     load (id) {
       return this.$newsApi(`item/${id}`)
+    },
+    onClickBack () {
+      if (window.history.length > 0) {
+        this.$router.back()
+      } else {
+        this.$router.push({name: 'home'})
+      }
     }
   },
   destroyed () {

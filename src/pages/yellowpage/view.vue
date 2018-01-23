@@ -1,6 +1,6 @@
 <template>
   <div class="yellow-page-detail has-fixed-header" v-if="is_online">
-    <x-header class="fixed" :left-options="{backText: $tt('RETURN', '返回')}">
+    <x-header class="fixed" :left-options="{backText: $tt('RETURN', '返回'), preventGoBack: true}" @on-click-back="onClickBack">
       {{ data.name }}
     </x-header>
     <div class="image-box">
@@ -53,6 +53,13 @@ export default {
         this.data = data
         this.$store.dispatch('loading', false)
       })
+    },
+    onClickBack () {
+      if (window.history.length > 0) {
+        this.$router.back()
+      } else {
+        this.$router.push({name: 'home'})
+      }
     }
   },
   beforeDestroy () {
