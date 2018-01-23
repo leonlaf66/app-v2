@@ -1,9 +1,13 @@
 <template>
   <div class="page-house-detail has-fixed-header">
+    <!--顶部导航-->
     <x-header class="fixed" :left-options="{backText: $tt('RETURN', '返回')}">
       <!-- <a slot="right">收藏</a> -->
+      <a slot="right" class="iconfont icon-marker" style="font-size:26px" @click="onViewMap" v-if="data.latlng"></a>
     </x-header>
+    <!--图像Gallery-->
     <Gallery ref="gallery"></Gallery>
+    <!--房源信息-->
     <template v-if="data.id">
       <div class="base-info">
         <div class="header">
@@ -30,26 +34,39 @@
       </div>
     </template>
 
+    <!--地图-->
+    <div v-transfer-dom>
+      <popup class="map-popup" v-model="showMap" position="bottom">
+        <house-map style="height:80vh;" :loc="{lat: Number(data.latlng[0]), lng: Number(data.latlng[1])}" v-if="data.latlng && showMap"></house-map>
+      </popup>
+    </div>
+
+    <!--推荐-->
     <nearbies ref="nearbies"></nearbies>
 
+    <!--底部导航-->
     <buttom-nav @item-click="handlerNavClick"></buttom-nav>
   </div>
 </template>
 
 <script>
 import XHeader from 'vux/src/components/x-header'
+import TransferDom from 'vux/src/directives/transfer-dom'
+import Popup from 'vux/src/components/popup'
 import Group from 'vux/src/components/group'
 import Cell from 'vux/src/components/cell'
 import HouseList from '@/components/house/list'
 import Nearbies from '@/components/house/nearbies'
 import Gallery from './detail/gallery'
+import HouseMap from './detail/map'
 import ButtomNav from './detail/bottomNav'
 
 export default {
   data () {
     return {
       id: this.$route.params.id,
-      data: {}
+      data: {},
+      showMap: false
     }
   },
   filters: {
@@ -86,6 +103,9 @@ export default {
     onNearbiesView () {
       this.$refs.nearbies.setShow(this.id)
     },
+    onViewMap () {
+      this.showMap = !this.showMap
+    },
     handlerNavClick (type) {
       //
     }
@@ -101,6 +121,9 @@ export default {
       }
     }
   },
+  directives: {
+    TransferDom
+  },
   components: {
     XHeader,
     Group,
@@ -108,6 +131,8 @@ export default {
     Gallery,
     HouseList,
     Nearbies,
+    HouseMap,
+    Popup,
     ButtomNav
   }
 }
@@ -159,6 +184,11 @@ export default {
   .nearby-houses {
     margin-top:10px;
     > h2 {padding-left:5px;;margin:0;font-size:16px;}
+  }
+
+  .house-map {
+    background-color:#fff;
+    padding:15px 10px 0 10px;
   }
 }
 </style>
