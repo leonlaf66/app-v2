@@ -4,7 +4,7 @@
       ref="scroller"
       noDataText="该分类下没有新闻了"
       :on-infinite="onInfinite">
-        <banner :items="banners"></banner>
+        <banner :items="banners" @news-click="onSelected"></banner>
         <types :items="types" @changed="onTypeChanged"></types>
         <results class="news-result" @selected="onSelected" :items="items"></results>
     </scroller>

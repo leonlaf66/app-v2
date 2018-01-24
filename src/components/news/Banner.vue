@@ -2,9 +2,9 @@
   <div class="news-banner" style="height:240px;background:#e6e6e6">
     <carousel :watch-items="items">
         <carousel-item :key="item.id" v-for="(item, idx) in items">
-          <div class="image" :style="item.image | bgImageStyle">
+          <a class="image" :style="item.image | bgImageStyle" @click="$emit('news-click', item.news_id)">
             <div class="title">{{ item.title }}</div>
-          </div>
+          </a>
         </carousel-item>
     </carousel>
   </div>
@@ -50,6 +50,7 @@ export default {
   .v-carousel-item {width:100%;float:left;position:relative;}
 
   .image {
+    display:block;
     height:240px;
     background-repeat:no-repeat;
     background-size: cover;
