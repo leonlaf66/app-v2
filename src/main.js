@@ -9,6 +9,7 @@ import Plugins from '@/plugins/Plugins'
 import Launcher from '@/launcher.js'
 import Api from '@/tools/api.js'
 import VueScroller from 'vue-scroller'
+import AlertPlugin from 'vux/src/plugins/alert/index.js'
 import store from '@/vuex/index.js'
 import VueBgSrc from 'vue-bg-src'
 
@@ -21,6 +22,7 @@ Vue.use(AjaxPlugin)
 Vue.use(VueRouter)
 Vue.use(Plugins)
 Vue.use(Launcher)
+Vue.use(AlertPlugin)
 Vue.use(Api)
 Vue.use(VueBgSrc)
 
@@ -47,6 +49,11 @@ window.document.setDocumentTitle = function (title) {
 }
 
 router.beforeEach((to, from, next) => {
+  if (to.meta.auth) {
+    if (!store.state.account.user) {
+      return next({ name: 'login' })
+    }
+  }
   store.dispatch('loading', true)
   next()
 })

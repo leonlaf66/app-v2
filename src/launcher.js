@@ -48,5 +48,11 @@ export default {
       }
       return store.state.app.language === 'en-US' ? en : cn
     }
+
+    // 登陆初始化
+    let authUser = cookie.get('auth.user')
+    if (authUser) {
+      store.commit('CHANGE_USER', JSON.parse(authUser))
+    }
   }
 }

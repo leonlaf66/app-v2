@@ -23,6 +23,9 @@ export default {
     },
     isLoading () {
       return this.$store.state.app.isLoading
+    },
+    showMessage () {
+      return true
     }
   },
   created () {

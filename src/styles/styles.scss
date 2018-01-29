@@ -24,6 +24,9 @@
 }
 .weui-cells__title {padding-left:5px;}
 .vux-label, .weui-cell__ft {font-size:13px}
+.weui-btn_primary {
+  background-color: #99bd2a !important;
+}
 
 /*水平布局*/
 .lay-row {
@@ -120,3 +123,7 @@
   }
 }
 
+.no-record {
+  padding:10px;
+  color:#999;
+}

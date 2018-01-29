@@ -28,7 +28,7 @@
         margin-bottom:10px;
       }
     </style>
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_513179_dwtl1ul9qk3mcxr.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_513179_tjrvjazol6iozuxr.css">
     <!--
     <script src="//cdn.staticfile.org/babel-polyfill/6.16.0/polyfill.min.js"></script>
     -->
@@ -44,5 +44,27 @@
         </div>
       </div>
     </div>
+    <!-- Start of LiveChat (www.livechatinc.com) code -->
+    <!-- https://docs.livechatinc.com/js-api/#using-chat-window-api -->
+    <script type="text/javascript">
+    window.__lc = window.__lc || {};
+    window.__lc.license = 7739171;
+    var LC_API = LC_API || {};
+    (function() {
+      var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+      lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+    })();
+    LC_API.on_after_load = function() {
+      LC_API.hide_chat_window();
+      setTimeout(function () {
+        LC_API.open_chat_window();
+      }, 5000)
+    };
+    LC_API.on_chat_window_minimized = function() {
+      LC_API.hide_chat_window();
+    };
+    </script>
+    <!-- End of LiveChat code -->
   </body>
 </html>

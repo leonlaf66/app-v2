@@ -15,6 +15,7 @@
           <div class="address lr-pad">{{ data.loc }}</div>
           <div class="price lr-pad">{{ data.price | price }}</div>
         </div>
+        <a @click="onClickLike(!data.liked)" class="ft iconfont icon-like" :class="{'liked': data.liked}"></a>
       </div>
 
       <div class="more-information vux-1px-tb" @click="onNearbiesView" v-if="data.prop !== 'LD'">
@@ -45,7 +46,7 @@
     <nearbies ref="nearbies"></nearbies>
 
     <!--底部导航-->
-    <buttom-nav @item-click="handlerNavClick"></buttom-nav>
+    <buttom-nav :house="data" @item-click="handlerNavClick"></buttom-nav>
   </div>
 </template>
 
@@ -115,6 +116,16 @@ export default {
       } else {
         this.$router.push({name: 'yellowpage'})
       }
+    },
+    onClickLike (status) {
+      let params = {
+        id: this.data.id,
+        status: this.data.liked ? '0' : '1'
+      }
+
+      this.$houseApi(`house/${this.data.id}/like`, { params }).then(flag => {
+        this.$set(this.data, 'liked', status)
+      })
     }
   },
   beforeDestroy () {
@@ -149,9 +160,11 @@ export default {
 .page-house-detail {
   margin-bottom: 57px;
   .base-info {
+    position:relative;
     background-color:#fff;
     padding-bottom:5px;
     margin-top:15px;
+    .header {margin-top:10px;}
     .lr-pad {padding:0 5px;}
     .name {font-size:16px;font-weight:bold;margin-bottom:3px;}
     .address {color:#777;}
@@ -166,6 +179,18 @@ export default {
         > span {
           color:#777;
         }
+      }
+    }
+    .ft {
+      position:absolute;
+      right:10px;
+      top:10px;
+    }
+    .icon-like {
+      font-size:24px;
+      color:#aaa;
+      &.liked {
+        color:#a0b737;
       }
     }
   }

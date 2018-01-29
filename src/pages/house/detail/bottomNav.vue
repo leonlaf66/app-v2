@@ -1,44 +1,40 @@
 <template>
   <div class="house-tabs disabled">
     <ul>
-      <li @click="showContactUs = true">
+      <li @click="showTour = true">
         <div>
-          <i class="icon iconfont icon-kefu"></i>
+          <i class="icon iconfont icon-kanfang"></i>
         </div>
-        <div>{{ 'Contact Us' | $tt('联系我们') }}</div>
+        <div>{{ 'Go Tour' | $tt('看房') }}</div>
       </li>
       <!--
-      <li @click="handler('question')">
-        <div>
-          <i class="icon iconfont icon-question"></i>
-        </div>
-        <div>{{ 'Question' | $tt('答疑') }}</div>
-      </li>
       <li @click="handler('loan')">
         <div>
           <i class="icon iconfont icon-daikuan"></i>
         </div>
         <div>{{ 'Mortgage' | $tt('贷款') }}</div>
       </li>
-      <li @click="handler('tour')">
-        <div>
-          <i class="icon iconfont icon-kanfang"></i>
-        </div>
-        <div>{{ 'Go Tour' | $tt('看房') }}</div>
-      </li>
       -->
+      <li @click="onClickQuestion">
+        <div>
+          <i class="icon iconfont icon-question"></i>
+        </div>
+        <div>{{ 'Question' | $tt('答疑') }}</div>
+      </li>
+      <li @click="showContactUs = true">
+        <div>
+          <i class="icon iconfont icon-kefu"></i>
+        </div>
+        <div>{{ 'Contact' | $tt('联系') }}</div>
+      </li>
     </ul>
     <div v-transfer-dom>
       <popup class="contact-us-popup" v-model="showContactUs" position="bottom">
-        <group>
-          <div class="title" slot="title">
-            <div style="padding:8px 5px">
-              <i class="iconfont icon-kefu"></i>
-              {{ 'Contact Us' | $tt('联系我们') }}
-            </div>
-          </div>
-          <cell v-for="item in contactItems" :title="item.title | $tt" :value="item.value" :key="item.title[0]"></cell>
-        </group>
+        <contacts></contacts>
+      </popup>
+
+      <popup class="tour-us-popup" v-model="showTour" position="bottom">
+        <house-tour :house="house" @confirm="showTour = false"></house-tour>
       </popup>
     </div>
   </div>
@@ -47,35 +43,28 @@
 <script>
 import TransferDom from 'vux/src/directives/transfer-dom'
 import Popup from 'vux/src/components/popup'
-import Group from 'vux/src/components/group'
-import Cell from 'vux/src/components/cell'
+import HouseTour from '@/components/house/tour'
+import Contacts from '@/components/contacts'
 
 export default {
   name: 'house-nav',
+  props: {
+    house: {
+      require: true,
+      default: {}
+    }
+  },
   data () {
     return {
       showContactUs: false,
-      contactItems: [
-        {
-          title: ['Mobile', '移动电话'],
-          value: '+086 15680728360'
-        },
-        {
-          title: ['Tel', '座机'],
-          value: '888-610-3288'
-        },
-        {
-          title: ['Email', '邮箱'],
-          value: 'contact@usleju.com'
-        },
-        {
-          title: ['WeChat', '微信ID'],
-          value: 'woniuusa'
-        }
-      ]
+      showTour: false,
+      tourValue: []
     }
   },
   methods: {
+    onClickQuestion () {
+      window.LC_API.open_chat_window()
+    },
     handler (type) {
       this.$emit('item-click', type)
     }
@@ -85,8 +74,8 @@ export default {
   },
   components: {
     Popup,
-    Group,
-    Cell
+    HouseTour,
+    Contacts
   }
 }
 </script>

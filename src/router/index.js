@@ -68,6 +68,32 @@ export default new Router({
       name: 'buy-house-flow',
       meta: {keepAlive: true, title: ['Workflow', '购房流程']},
       component: () => import('@/pages/house/workflow')
+    },
+    /* passport */
+    {
+      path: '/:area_id/login',
+      name: 'login',
+      meta: {title: ['Login', '用户登陆']},
+      component: () => import('@/pages/passport/login')
+    },
+    {
+      path: '/:area_id/register',
+      name: 'register',
+      meta: {title: ['Login', '用户注册']},
+      component: () => import('@/pages/passport/register')
+    },
+    /* members */
+    {
+      path: '/:area_id/my-favorites',
+      name: 'my-favorites',
+      meta: {title: ['My Favorites', '我的收藏'], auth: true},
+      component: () => import('@/pages/member/favorites')
+    },
+    {
+      path: '/:area_id/my-schedules',
+      name: 'my-schedules',
+      meta: {title: ['My Schedules', '我的预约'], auth: true},
+      component: () => import('@/pages/member/schedules')
     }
   ]
 })

@@ -7,12 +7,20 @@ export default {
     let params = {
       app_token: config.api.appToken
     }
+
     let request = function (config) {
       config.params.area_id = store.state.app.areaId
       config.params.language = store.state.app.language
+      if (store.state.account.user) {
+        config.params.access_token = store.state.account.user.access_token
+      }
       return config
     }
     let responseSucess = function (response) {
+      if (response.data.code && response.data.message) {
+        Vue.$vux.alert.show({title: response.data.code, content: response.data.message})
+        return Promise.reject(response.message)
+      }
       return response.data
     }
     let responseError = function (error) {
@@ -42,5 +50,21 @@ export default {
     })
     vm.newsApi.interceptors.request.use(request)
     vm.newsApi.interceptors.response.use(responseSucess, responseError)
+
+    // passport api
+    vm.passportApi = vm.prototype.$passportApi = Vue.http.create({
+      baseURL: process.env.API_PASSPORT_URL,
+      params
+    })
+    vm.passportApi.interceptors.request.use(request)
+    vm.passportApi.interceptors.response.use(responseSucess, responseError)
+
+    // member api
+    vm.memberApi = vm.prototype.$memberApi = Vue.http.create({
+      baseURL: process.env.API_MEMBER_URL,
+      params
+    })
+    vm.memberApi.interceptors.request.use(request)
+    vm.memberApi.interceptors.response.use(responseSucess, responseError)
   }
 }
