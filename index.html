@@ -57,9 +57,6 @@
     })();
     LC_API.on_after_load = function() {
       LC_API.hide_chat_window();
-      setTimeout(function () {
-        LC_API.open_chat_window();
-      }, 5000)
     };
     LC_API.on_chat_window_minimized = function() {
       LC_API.hide_chat_window();
