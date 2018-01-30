@@ -6,15 +6,16 @@
           <i class="iconfont icon-kanfang"></i>
           {{ 'Go Tour This House' | $tt('预约看房') }}
         </div>
-        <a class="ft" @click="onClickOk">{{ 'Schedule Tour' | $tt('预约') }}</a>
       </div>
     </group>
     <day-time-range v-model="tourValue"></day-time-range>
+    <x-button type="primary" @click.native="onClickOk">{{ 'Schedule Tour' | $tt('预约') }}</x-button>
   </div>
 </template>
 
 <script>
 import Group from 'vux/src/components/group'
+import XButton from 'vux/src/components/x-button'
 import DayTimeRange from '@/components/dayTimeRange'
 
 export default {
@@ -54,26 +55,12 @@ export default {
   },
   components: {
     Group,
-    DayTimeRange
+    DayTimeRange,
+    XButton
   }
 }
 </script>
 
-<style lang="scss">
-.house-tour-box {
-  .title {
-    position:relative;
-    .ft {
-      display: block;
-      padding: 0 45px;
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #fff;
-      background: #a0b737;
-      height: 35px;
-      line-height: 35px;
-    }
-  }
-}
+<style>
+.house-tour-box .weui-btn {border-radius:0;}
 </style>

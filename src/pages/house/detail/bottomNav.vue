@@ -1,40 +1,22 @@
 <template>
-  <div class="house-tabs disabled">
+  <div class="house-tabs">
     <ul>
-      <li @click="showTour = true">
+      <li v-for="item of navItems" @click="item.handler()">
         <div>
-          <i class="icon iconfont icon-kanfang"></i>
+          <i class="icon iconfont" :class="'icon-' + item.icon"></i>
         </div>
-        <div>{{ 'Go Tour' | $tt('看房') }}</div>
-      </li>
-      <!--
-      <li @click="handler('loan')">
-        <div>
-          <i class="icon iconfont icon-daikuan"></i>
-        </div>
-        <div>{{ 'Mortgage' | $tt('贷款') }}</div>
-      </li>
-      -->
-      <li @click="onClickQuestion">
-        <div>
-          <i class="icon iconfont icon-question"></i>
-        </div>
-        <div>{{ 'Question' | $tt('答疑') }}</div>
-      </li>
-      <li @click="showContactUs = true">
-        <div>
-          <i class="icon iconfont icon-kefu"></i>
-        </div>
-        <div>{{ 'Contact' | $tt('联系') }}</div>
+        <div>{{ $tt(item.title) }}</div>
       </li>
     </ul>
     <div v-transfer-dom>
-      <popup class="contact-us-popup" v-model="showContactUs" position="bottom">
-        <contacts></contacts>
-      </popup>
-
       <popup class="tour-us-popup" v-model="showTour" position="bottom">
         <house-tour :house="house" @confirm="showTour = false"></house-tour>
+      </popup>
+      <popup class="mortgage-popup" v-model="showMortgage" position="bottom">
+        <house-mortgage :house="house" @confirm="showTour = false"></house-mortgage>
+      </popup>
+      <popup class="contact-us-popup" v-model="showContactUs" position="bottom">
+        <contacts :house="house"></contacts>
       </popup>
     </div>
   </div>
@@ -44,8 +26,8 @@
 import TransferDom from 'vux/src/directives/transfer-dom'
 import Popup from 'vux/src/components/popup'
 import HouseTour from '@/components/house/tour'
+import HouseMortgage from '@/components/house/mortgage'
 import Contacts from '@/components/contacts'
-
 export default {
   name: 'house-nav',
   props: {
@@ -55,9 +37,41 @@ export default {
     }
   },
   data () {
+    let self = this
     return {
-      showContactUs: false,
+      navItems: [
+        {
+          title: ['Go Tour', '看房'],
+          icon: 'kanfang',
+          handler () {
+            self.showTour = true
+          }
+        },
+        {
+          title: ['Mortgage', '贷款'],
+          icon: 'daikuan',
+          handler () {
+            self.showMortgage = true
+          }
+        },
+        {
+          title: ['Question', '答疑'],
+          icon: 'question',
+          handler () {
+            self.onClickQuestion()
+          }
+        },
+        {
+          title: ['Contact', '联系'],
+          icon: 'kefu',
+          handler () {
+            self.showContactUs = true
+          }
+        }
+      ],
+      showMortgage: false,
       showTour: false,
+      showContactUs: false,
       tourValue: []
     }
   },
@@ -75,6 +89,7 @@ export default {
   components: {
     Popup,
     HouseTour,
+    HouseMortgage,
     Contacts
   }
 }

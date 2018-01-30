@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/async@2.0.46":
+  version "2.0.46"
+  resolved "http://registry.npm.taobao.org/@types/async/download/@types/async-2.0.46.tgz#f13a6c336a6582b95d0c0269e796b709488fd54d"
+
 "@types/node@*":
   version "8.5.1"
   resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-8.5.1.tgz#4ec3020bcdfe2abffeef9ba3fbf26fca097514b5"
@@ -13,6 +17,10 @@
 "@types/strip-json-comments@0.0.30":
   version "0.0.30"
   resolved "http://registry.npm.taobao.org/@types/strip-json-comments/download/@types/strip-json-comments-0.0.30.tgz#9aa30c04db212a9a0649d6ae6fd50accc40748a1"
+
+"@types/zen-observable@0.5.3", "@types/zen-observable@^0.5.3":
+  version "0.5.3"
+  resolved "http://registry.npm.taobao.org/@types/zen-observable/download/@types/zen-observable-0.5.3.tgz#91b728599544efbb7386d8b6633693a3c2e7ade5"
 
 abab@^1.0.3:
   version "1.0.4"
@@ -142,6 +150,44 @@ anymatch@^1.3.0:
   dependencies:
     micromatch "^2.1.5"
     normalize-path "^2.0.0"
+
+apollo-cache@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/apollo-cache/download/apollo-cache-1.1.0.tgz#281b6a0fb6ca2c5bce69825642f685de92d05f3c"
+  dependencies:
+    apollo-utilities "^1.0.4"
+
+apollo-client@^2.2.0:
+  version "2.2.0"
+  resolved "http://registry.npm.taobao.org/apollo-client/download/apollo-client-2.2.0.tgz#e22c4ba3a3c01aec6dc916a5dbc0f39c58d277fb"
+  dependencies:
+    "@types/zen-observable" "^0.5.3"
+    apollo-cache "^1.1.0"
+    apollo-link "^1.0.0"
+    apollo-link-dedup "^1.0.0"
+    apollo-utilities "^1.0.4"
+    symbol-observable "^1.0.2"
+    zen-observable "^0.7.0"
+  optionalDependencies:
+    "@types/async" "2.0.46"
+
+apollo-link-dedup@^1.0.0:
+  version "1.0.5"
+  resolved "http://registry.npm.taobao.org/apollo-link-dedup/download/apollo-link-dedup-1.0.5.tgz#1c213d7ebbe48e74b016fffacd7e6a53dc309e32"
+  dependencies:
+    apollo-link "^1.0.7"
+
+apollo-link@^1.0.0, apollo-link@^1.0.7:
+  version "1.0.7"
+  resolved "http://registry.npm.taobao.org/apollo-link/download/apollo-link-1.0.7.tgz#42cd38a7378332fc3e41a214ff6a6e5e703a556f"
+  dependencies:
+    "@types/zen-observable" "0.5.3"
+    apollo-utilities "^1.0.0"
+    zen-observable "^0.6.0"
+
+apollo-utilities@^1.0.0, apollo-utilities@^1.0.4:
+  version "1.0.4"
+  resolved "http://registry.npm.taobao.org/apollo-utilities/download/apollo-utilities-1.0.4.tgz#560009ea5541b9fdc4ee07ebb1714ee319a76c15"
 
 append-transform@^0.4.0:
   version "0.4.0"
@@ -3720,10 +3766,6 @@ is-number@^3.0.0:
   dependencies:
     kind-of "^3.0.2"
 
-is-numeric@^0.0.5:
-  version "0.0.5"
-  resolved "http://registry.npm.taobao.org/is-numeric/download/is-numeric-0.0.5.tgz#5f26778b3385005334344b1b5985ee7ea63316e6"
-
 is-path-cwd@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/is-path-cwd/download/is-path-cwd-1.0.0.tgz#d225ec23132e89edd38fda767472e62e65f1106d"
@@ -4524,6 +4566,10 @@ lodash.mergewith@^4.0.0, lodash.mergewith@^4.6.0:
   version "4.6.0"
   resolved "http://registry.npm.taobao.org/lodash.mergewith/download/lodash.mergewith-4.6.0.tgz#150cf0a16791f5903b8891eab154609274bdea55"
 
+lodash.omit@^4.5.0:
+  version "4.5.0"
+  resolved "http://registry.npm.taobao.org/lodash.omit/download/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
+
 lodash.rest@^4.0.0:
   version "4.0.5"
   resolved "http://registry.npm.taobao.org/lodash.rest/download/lodash.rest-4.0.5.tgz#954ef75049262038c96d1fc98b28fdaf9f0772aa"
@@ -4544,7 +4590,7 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "http://registry.npm.taobao.org/lodash.uniq/download/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-"lodash@3 - 4", lodash@4.x, lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0, lodash@~4.17.4:
+lodash@4.x, lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0, lodash@~4.17.4:
   version "4.17.4"
   resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -6400,10 +6446,6 @@ schema-utils@^0.3.0:
   dependencies:
     ajv "^5.0.0"
 
-scrollmonitor@^1.1.3:
-  version "1.2.4"
-  resolved "http://registry.npm.taobao.org/scrollmonitor/download/scrollmonitor-1.2.4.tgz#823d04cc1574aa3b71de7cc70ef91ebe633344a0"
-
 scss-tokenizer@^0.2.3:
   version "0.2.3"
   resolved "http://registry.npm.taobao.org/scss-tokenizer/download/scss-tokenizer-0.2.3.tgz#8eb06db9a9723333824d3f5530641149847ce5d1"
@@ -6889,6 +6931,10 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
+symbol-observable@^1.0.2:
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/symbol-observable/download/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
+
 symbol-tree@^3.2.1:
   version "3.2.2"
   resolved "http://registry.npm.taobao.org/symbol-tree/download/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
@@ -7249,6 +7295,14 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-apollo@^3.0.0-alpha.2:
+  version "3.0.0-alpha.2"
+  resolved "http://registry.npm.taobao.org/vue-apollo/download/vue-apollo-3.0.0-alpha.2.tgz#7456ac833a9c0e8fde8c7b76fcc1da20b09e7192"
+  dependencies:
+    lodash.debounce "^4.0.8"
+    lodash.omit "^4.5.0"
+    lodash.throttle "^4.1.1"
+
 vue-bg-src@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/vue-bg-src/download/vue-bg-src-1.0.1.tgz#1230c3b28367f8d2db8c4fcd5f1cf1788f5bd7ca"
@@ -7329,14 +7383,6 @@ vue-template-compiler@^2.5.2:
 vue-template-es2015-compiler@^1.5.3, vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
-
-vue-visual@^0.3.2:
-  version "0.3.2"
-  resolved "http://registry.npm.taobao.org/vue-visual/download/vue-visual-0.3.2.tgz#eb94f5074de391ad6bc47d805c7227bd80f720fe"
-  dependencies:
-    is-numeric "^0.0.5"
-    lodash "3 - 4"
-    scrollmonitor "^1.1.3"
 
 vue2-autocomplete-js@^0.2.2:
   version "0.2.2"
@@ -7834,3 +7880,11 @@ yauzl@2.4.1:
   resolved "http://registry.npm.taobao.org/yauzl/download/yauzl-2.4.1.tgz#9528f442dab1b2284e58b4379bb194e22e0c4005"
   dependencies:
     fd-slicer "~1.0.1"
+
+zen-observable@^0.6.0:
+  version "0.6.1"
+  resolved "http://registry.npm.taobao.org/zen-observable/download/zen-observable-0.6.1.tgz#01dbed3bc8d02cbe9ee1112c83e04c807f647244"
+
+zen-observable@^0.7.0:
+  version "0.7.1"
+  resolved "http://registry.npm.taobao.org/zen-observable/download/zen-observable-0.7.1.tgz#f84075c0ee085594d3566e1d6454207f126411b3"

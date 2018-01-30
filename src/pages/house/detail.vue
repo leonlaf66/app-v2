@@ -15,7 +15,7 @@
           <div class="address lr-pad">{{ data.loc }}</div>
           <div class="price lr-pad">{{ data.price | price }}</div>
         </div>
-        <a @click="onClickLike(!data.liked)" class="ft iconfont icon-like" :class="{'liked': data.liked}"></a>
+        <like-it class="ft" :house="data" @success="onLikeSuccess"></like-it>
       </div>
 
       <div class="more-information vux-1px-tb" @click="onNearbiesView" v-if="data.prop !== 'LD'">
@@ -59,6 +59,7 @@ import Cell from 'vux/src/components/cell'
 import HouseList from '@/components/house/list'
 import Nearbies from '@/components/house/nearbies'
 import Gallery from './detail/gallery'
+import LikeIt from './detail/LikeIt'
 import HouseMap from './detail/map'
 import ButtomNav from './detail/bottomNav'
 
@@ -117,15 +118,8 @@ export default {
         this.$router.push({name: 'yellowpage'})
       }
     },
-    onClickLike (status) {
-      let params = {
-        id: this.data.id,
-        status: this.data.liked ? '0' : '1'
-      }
-
-      this.$houseApi(`house/${this.data.id}/like`, { params }).then(flag => {
-        this.$set(this.data, 'liked', status)
-      })
+    onLikeSuccess (status) {
+      this.$set(this.data, 'liked', status)
     }
   },
   beforeDestroy () {
@@ -150,6 +144,7 @@ export default {
     HouseList,
     Nearbies,
     HouseMap,
+    LikeIt,
     Popup,
     ButtomNav
   }
@@ -185,13 +180,6 @@ export default {
       position:absolute;
       right:10px;
       top:10px;
-    }
-    .icon-like {
-      font-size:24px;
-      color:#aaa;
-      &.liked {
-        color:#a0b737;
-      }
     }
   }
 

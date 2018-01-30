@@ -15,6 +15,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "apollo-client": "^2.2.0",
     "fastclick": "^1.0.6",
     "node-sass": "^4.7.2",
     "node-zopfli": "^2.0.2",
@@ -22,6 +23,7 @@
     "querystrings": "^0.4.0",
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
+    "vue-apollo": "^3.0.0-alpha.2",
     "vue-bg-src": "^1.0.1",
     "vue-image-lazy": "^1.0.1",
     "vue-l-carousel": "^1.0.1",
