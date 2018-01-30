@@ -1,4 +1,5 @@
 import store from '@/vuex'
+import numeral from 'numeral'
 
 export default {
   install (Vue, options) {
@@ -27,12 +28,12 @@ export default {
     Vue.filter('price', (value) => {
       if (store.state.app.language === 'zh-CN') {
         if (parseFloat(value) > 10000) {
-          return `${window.numeral(value / 10000.0).format('0,0.00')}万美元`
+          return `${numeral(value / 10000.0).format('0,0.00')}万美元`
         }
-        return `${window.numeral(value).format('0,0')}美元`
+        return `${numeral(value).format('0,0')}美元`
       }
 
-      return '$' + `${window.numeral(value).format('0,0')}`
+      return '$' + `${numeral(value).format('0,0')}`
     })
 
     Vue.filter('square', (value) => {
@@ -94,6 +95,9 @@ export default {
     Vue.component('RemoteScript', {
       render: function (createElement) {
         var self = this
+        if (window.hasOwnProperty(this.oid)) {
+          return false
+        }
         return createElement('script', {
           attrs: {
             type: 'text/javascript',
@@ -115,6 +119,10 @@ export default {
         })
       },
       props: {
+        oid: {
+          type: String,
+          required: true
+        },
         src: {
           type: String,
           required: true

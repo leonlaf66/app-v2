@@ -19,6 +19,7 @@
     "fastclick": "^1.0.6",
     "node-sass": "^4.7.2",
     "node-zopfli": "^2.0.2",
+    "numeral": "^2.0.6",
     "qs": "^6.5.1",
     "querystrings": "^0.4.0",
     "sass-loader": "^6.0.6",

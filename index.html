@@ -4,40 +4,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title></title>
-    <style>
-      ul{list-style:none;margin:0;padding:0;}
-      .flash-page {
-        height:100vh;
-        position:absolute;
-        top:0;right:0;bottom:0;left:0;
-        background:#99bd2a;
-        z-index:9999;
-        line-height:100vh;
-        text-align:center;
-      }
-      .flash-page .message {
-        display:inline-block;
-        font-size:15px;
-        line-height:24px;
-        color:#fff;
-      }
-      .flash-page .message > img{
-        display:block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom:10px;
-      }
-    </style>
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_513179_tjrvjazol6iozuxr.css">
-    <!--
-    <script src="//cdn.staticfile.org/babel-polyfill/6.16.0/polyfill.min.js"></script>
-    -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-    <script src="http://maps.google.cn/maps/api/js?key=AIzaSyAKfreY6Rf9fOvsJNcxGMsPPNHpXbvj6wo&v=3.exp"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
   </head>
   <body>
     <div id="app">
+      <style>
+        ul{list-style:none;margin:0;padding:0;}
+        .flash-page {
+          height:100vh;
+          position:absolute;
+          top:0;right:0;bottom:0;left:0;
+          background:#99bd2a;
+          z-index:9999;
+          line-height:100vh;
+          text-align:center;
+        }
+        .flash-page .message {
+          display:inline-block;
+          font-size:15px;
+          line-height:24px;
+          color:#fff;
+        }
+        .flash-page .message > img{
+          display:block;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom:10px;
+        }
+      </style>
       <div class="flash-page">
         <div class="message">
           <img src="/static/imgs/loading-bar.gif">
@@ -45,6 +38,7 @@
         </div>
       </div>
     </div>
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_513179_tjrvjazol6iozuxr.css">
     <!-- Start of LiveChat (www.livechatinc.com) code -->
     <!-- https://docs.livechatinc.com/js-api/#using-chat-window-api -->
     <script type="text/javascript">

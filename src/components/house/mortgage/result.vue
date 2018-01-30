@@ -1,14 +1,25 @@
 <template>
-  <svg width="180px" height="185px"></svg>
+  <div>
+    <remote-script oid="d3" src="http://d3js.org/d3.v3.min.js" @load="d3loaded"></remote-script>
+    <svg width="180px" height="185px"></svg>
+  </div>
 </template>
 
 <script>
 export default {
   props: ['data'],
+  data () {
+    return {
+      d3ready: false
+    }
+  },
   methods: {
+    d3loaded () {
+      this.d3ready = true
+    },
     drawChartPie (dataset, monthPay) {
       var d3 = window.d3
-      var ele = this.$el
+      var ele = this.$el.querySelector('svg')
       var pie = d3.layout.pie()
       var arc = d3.svg.arc()
         .innerRadius(40)
@@ -86,7 +97,7 @@ export default {
   },
   watch: {
     data (data) {
-      if (data.monthPay) {
+      if (data.monthPay && (this.d3ready || window.d3)) {
         this.drawChartPie([data.monthPay - data.tax / 12, data.tax], data.monthPay)
       }
     }
