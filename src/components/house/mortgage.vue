@@ -29,9 +29,6 @@
         <div style="text-align:center;padding:20px 0">
           <mortgage-result :data="results"></mortgage-result>
         </div>
-        <div @click="showResult = false" style="background-color:#f4f4f4;padding:3px 0">
-          <span class="vux-close"></span>
-        </div>
       </x-dialog>
 
       <x-button type="primary" @click.native="onClickOk">{{ 'Calculate' | $tt('计算') }}</x-button>
