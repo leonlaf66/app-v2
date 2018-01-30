@@ -46,7 +46,7 @@
     <nearbies ref="nearbies"></nearbies>
 
     <!--底部导航-->
-    <buttom-nav :house="data" @item-click="handlerNavClick"></buttom-nav>
+    <buttom-nav :house="data"></buttom-nav>
   </div>
 </template>
 
@@ -108,14 +108,12 @@ export default {
     onViewMap () {
       this.showMap = !this.showMap
     },
-    handlerNavClick (type) {
-      //
-    },
     onClickBack () {
+      this.$store.dispatch('loading', true)
       if (window.history.length > 1) {
         this.$router.back()
       } else {
-        this.$router.push({name: 'yellowpage'})
+        this.$router.push({name: 'home'})
       }
     },
     onLikeSuccess (status) {

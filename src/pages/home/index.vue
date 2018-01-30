@@ -40,6 +40,7 @@ export default {
     if (from.name !== 'house-detail') {
       next(vm => {
         vm.$scrollTop(0)
+        vm.$store.dispatch('loading', false)
       })
     } else {
       next()

@@ -129,6 +129,7 @@ export default {
             vm.$refs.scroller.scrollTo(0, vm.position, false)
           }, 10)
         }
+        vm.$store.dispatch('loading', false)
       })
     } else {
       next(vm => {
