@@ -1,6 +1,6 @@
 <template>
   <div>
-    <remote-script oid="d3" src="http://d3js.org/d3.v3.min.js" @load="d3loaded"></remote-script>
+    <remote-script oid="d3" src="http://d3js.org/d3.v3.min.js" @load="onD3Loaded"></remote-script>
     <svg width="180px" height="185px"></svg>
   </div>
 </template>
@@ -10,12 +10,24 @@ export default {
   props: ['data'],
   data () {
     return {
-      d3ready: false
+      waiting: false,
+      state: {
+        d3ready: false
+      }
+    }
+  },
+  computed: {
+    d3IsReady () {
+      return window.d3 || this.this.state.d3ready
     }
   },
   methods: {
-    d3loaded () {
-      this.d3ready = true
+    onD3Loaded () {
+      this.state.d3ready = true
+      if (this.waiting) {
+        this.drawChartPie([this.data.monthPay - this.data.tax / 12, this.data.tax], this.data.monthPay)
+        this.waiting = false
+      }
     },
     drawChartPie (dataset, monthPay) {
       var d3 = window.d3
@@ -97,7 +109,11 @@ export default {
   },
   watch: {
     data (data) {
-      if (data.monthPay && (this.d3ready || window.d3)) {
+      if (data.monthPay) {
+        if (!this.d3IsReady) {
+          this.waiting = true
+          return false
+        }
         this.drawChartPie([data.monthPay - data.tax / 12, data.tax], data.monthPay)
       }
     }

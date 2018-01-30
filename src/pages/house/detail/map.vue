@@ -21,7 +21,7 @@ export default {
     }
   },
   mounted () {
-    if (window.google) {
+    if (this.jsIsLoaded) {
       this.load()
     }
   },
