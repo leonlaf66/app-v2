@@ -15,7 +15,7 @@ export default {
     // 利率
     var rate = parseFloat(!r ? 0 : r)
     // 税费
-    var tax = parseFloat(!x ? 0 : x.replace(',', ''))
+    var tax = parseFloat(!x ? 0 : x)
 
     if (firstRate < 10 || firstRate > 80) {
       return false

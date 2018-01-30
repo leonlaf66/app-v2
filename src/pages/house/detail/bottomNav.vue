@@ -1,7 +1,7 @@
 <template>
   <div class="house-tabs">
     <ul>
-      <li v-for="item of navItems" @click="item.handler()">
+      <li v-for="item of navItems" @click="item.handler()" v-if="!item.vif || item.vif()">
         <div>
           <i class="icon iconfont" :class="'icon-' + item.icon"></i>
         </div>
@@ -13,7 +13,7 @@
         <house-tour :house="house" @confirm="showTour = false"></house-tour>
       </popup>
       <popup class="mortgage-popup" v-model="showMortgage" position="bottom">
-        <house-mortgage :house="house" @confirm="showTour = false"></house-mortgage>
+        <house-mortgage ref="house-mortgage" :house="house" @confirm="showTour = false"></house-mortgage>
       </popup>
       <popup class="contact-us-popup" v-model="showContactUs" position="bottom">
         <contacts :house="house"></contacts>
@@ -52,6 +52,10 @@ export default {
           icon: 'daikuan',
           handler () {
             self.showMortgage = true
+            self.$refs['house-mortgage'].load(self.house.price, self.house.taxes)
+          },
+          vif () {
+            return self.house.prop !== 'RN'
           }
         },
         {

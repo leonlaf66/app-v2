@@ -9,7 +9,7 @@
       </div>
     </group>
 
-    <template v-if="parseFloat(house.taxes) > 0">
+    <template v-if="data.taxes > 0">
       <group>
         <x-input required v-model="data.price" type="number" :title="'Purchase Price' | $tt('房屋总价')" :show-clear="false">
           <span slot="right">{{ 'USD' | $tt('万美元') }}</span>
@@ -51,12 +51,6 @@ import mortgage from '@/tools/house.mortgage'
 import MortgageResult from './mortgage/result'
 
 export default {
-  props: {
-    house: {
-      require: true,
-      default: {}
-    }
-  },
   data () {
     return {
       data: {
@@ -64,23 +58,21 @@ export default {
         payment: '20',
         rate: '4.5',
         term: '30',
-        taxes: '0'
+        taxes: 0
       },
       showResult: false,
       results: {}
     }
   },
-  mounted () {
-    setTimeout(() => {
-      if (this.$store.state.app.language === 'zh-CN') {
-        this.$set(this.data, 'price', this.house.price * 1.0 / 10000)
-      } else {
-        this.$set(this.data, 'price', this.house.price * 1.0)
-      }
-      this.$set(this.data, 'taxes', this.house.taxes)
-    }, 1000)
-  },
   methods: {
+    load (price, taxes) {
+      if (this.$store.state.app.language === 'zh-CN') {
+        this.$set(this.data, 'price', price * 1.0 / 10000)
+      } else {
+        this.$set(this.data, 'price', price * 1.0)
+      }
+      this.$set(this.data, 'taxes', parseFloat(taxes))
+    },
     onClickOk () {
       let price = null
       if (this.$store.state.app.language === 'zh-CN') {
