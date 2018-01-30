@@ -75,7 +75,7 @@ export default {
       if (this.$store.state.app.language === 'zh-CN') {
         this.$set(this.data, 'price', this.house.price * 1.0 / 10000)
       } else {
-        this.$set(this.data, 'price', this.house.price)
+        this.$set(this.data, 'price', this.house.price * 1.0)
       }
       this.$set(this.data, 'taxes', this.house.taxes)
     }, 1000)
@@ -85,6 +85,8 @@ export default {
       let price = null
       if (this.$store.state.app.language === 'zh-CN') {
         price = this.data.price * 10000
+      } else {
+        price = this.data.price
       }
       this.results = mortgage.calculate(price, this.data.payment, this.data.term, this.data.rate, this.data.taxes)
       this.showResult = true
