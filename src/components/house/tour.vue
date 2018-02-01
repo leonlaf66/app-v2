@@ -1,19 +1,27 @@
 <template>
   <div class="house-tour-box">
-    <group>
-      <div class="title" slot="title">
-        <div style="padding:8px 5px">
-          <i class="iconfont icon-kanfang"></i>
-          {{ 'Go Tour This House' | $tt('预约看房') }}
-        </div>
-      </div>
-    </group>
+    <popup-header>
+      <template slot="left-text">
+        <i class="iconfont icon-kanfang"></i>
+        {{ 'Go Tour This House' | $tt('预约看房') }}
+      </template>
+    </popup-header>
+
+    <div class="done-tour" v-if="house.tour">
+      <template v-if="$store.state.app.language === 'zh-CN'">
+        历史预约: {{ house.tour.day }} {{ house.tour.time_from }} 至 {{ house.tour.time_to }} <span class="c-grey">{{ house.tour.confirmed ? '已确认' : '未确认' }}</span>
+      </template>
+      <template v-else>
+        History: {{ house.tour.day }} {{ house.tour.time_from }} to {{ house.tour.time_to }} <span class="c-grey">{{ house.tour.confirmed ? 'Confirmed' : 'Not Confirmed' }}</span>
+      </template>
+    </div>
     <day-time-range v-model="tourValue"></day-time-range>
     <x-button type="primary" @click.native="onClickOk">{{ 'Schedule Tour' | $tt('预约') }}</x-button>
   </div>
 </template>
 
 <script>
+import PopupHeader from 'vux/src/components/popup-header'
 import Group from 'vux/src/components/group'
 import XButton from 'vux/src/components/x-button'
 import DayTimeRange from '@/components/dayTimeRange'
@@ -49,11 +57,12 @@ export default {
       }
 
       this.$houseApi(`house/${this.house.id}/tour`, { method: 'post', data }).then(flag => {
-        this.$emit('confirm')
+        this.$emit('confirm', flag)
       })
     }
   },
   components: {
+    PopupHeader,
     Group,
     DayTimeRange,
     XButton
@@ -63,4 +72,8 @@ export default {
 
 <style>
 .house-tour-box .weui-btn {border-radius:0;}
+.house-tour-box .done-tour {
+  background:#fff;
+  padding:15px 10px;
+}
 </style>

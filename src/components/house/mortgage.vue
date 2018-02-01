@@ -1,13 +1,11 @@
 <template>
   <div class="house-mortgage">
-    <group>
-      <div class="title" slot="title">
-        <div style="padding:8px 5px">
-          <i class="iconfont icon-daikuan"></i>
-          {{ 'Mortgage calculator' | $tt('房贷计算器') }}
-        </div>
-      </div>
-    </group>
+    <popup-header :show-bottom-border="false">
+      <template slot="left-text">
+        <i class="iconfont icon-daikuan"></i>
+        {{ 'Mortgage calculator' | $tt('房贷计算器') }}
+      </template>
+    </popup-header>
 
     <template v-if="data.taxes > 0">
       <group>
@@ -34,7 +32,7 @@
       <x-button type="primary" @click.native="onClickOk">{{ 'Calculate' | $tt('计算') }}</x-button>
     </template>
     <template v-else>
-      <div class="message" style="padding:0 0 10px 10px;color:red">
+      <div class="message" style="padding:15px 10px;color:red">
         抱歉，未知的购房锐，无法计算...
       </div>
     </template>
@@ -43,6 +41,7 @@
 
 <script>
 import XDialog from 'vux/src/components/x-dialog'
+import PopupHeader from 'vux/src/components/popup-header'
 import Group from 'vux/src/components/group'
 import Cell from 'vux/src/components/cell'
 import XInput from '@/components/input'
@@ -85,11 +84,12 @@ export default {
     }
   },
   components: {
+    XDialog,
+    PopupHeader,
     Group,
     Cell,
     XInput,
     XButton,
-    XDialog,
     MortgageResult
   }
 }

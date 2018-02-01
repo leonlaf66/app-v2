@@ -18,14 +18,16 @@ export default {
   },
   computed: {
     d3IsReady () {
-      return window.d3 || this.this.state.d3ready
+      return window.d3 || this.state.d3ready
     }
   },
   methods: {
     onD3Loaded () {
       this.state.d3ready = true
       if (this.waiting) {
-        this.drawChartPie([this.data.monthPay - this.data.tax / 12, this.data.tax], this.data.monthPay)
+        setTimeout(() => {
+          this.drawChartPie([this.data.monthPay - this.data.tax / 12, this.data.tax], this.data.monthPay)
+        }, 400)
         this.waiting = false
       }
     },

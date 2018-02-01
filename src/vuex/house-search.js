@@ -1,8 +1,6 @@
-import Vue from 'vue'
-import filtersCall from '@/configs/house-filters/index.js'
-
 export default {
   state: {
+    type: null,
     q: '',
     filters: {},
     sort: {

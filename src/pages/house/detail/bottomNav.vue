@@ -10,10 +10,10 @@
     </ul>
     <div v-transfer-dom>
       <popup class="tour-us-popup" v-model="showTour" position="bottom">
-        <house-tour :house="house" @confirm="showTour = false"></house-tour>
+        <house-tour :house="house" @confirm="onHouseToured"></house-tour>
       </popup>
       <popup class="mortgage-popup" v-model="showMortgage" position="bottom">
-        <house-mortgage ref="house-mortgage" :house="house" @confirm="showTour = false"></house-mortgage>
+        <house-mortgage ref="house-mortgage" :house="house"></house-mortgage>
       </popup>
       <popup class="contact-us-popup" v-model="showContactUs" position="bottom">
         <contacts :house="house"></contacts>
@@ -82,6 +82,13 @@ export default {
   methods: {
     onClickQuestion () {
       window.LC_API.open_chat_window()
+    },
+    onHouseToured () {
+      this.showTour = false
+      this.$vux.toast.show({
+        type: 'success',
+        text: this.$tt('Completed reservation', '已完成预约')
+      })
     },
     handler (type) {
       this.$emit('item-click', type)

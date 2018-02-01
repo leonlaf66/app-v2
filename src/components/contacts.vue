@@ -1,17 +1,18 @@
 <template>
   <group>
-    <div class="title" slot="title">
-      <div style="padding:8px 5px">
+    <popup-header :show-bottom-border="false">
+      <template slot="left-text">
         <i class="iconfont icon-kefu"></i>
         {{ 'Contact Us' | $tt('联系我们') }}
-      </div>
-    </div>
+      </template>
+    </popup-header>
     <cell v-for="item in items" :title="item.title | $tt" :value="item.value" :key="item.title[0]"></cell>
   </group>
 </template>
 
 <script>
 import Group from 'vux/src/components/group'
+import PopupHeader from 'vux/src/components/popup-header'
 import Cell from 'vux/src/components/cell'
 export default {
   data () {
@@ -38,6 +39,7 @@ export default {
   },
   components: {
     Group,
+    PopupHeader,
     Cell
   }
 }

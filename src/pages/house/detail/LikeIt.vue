@@ -14,14 +14,34 @@ export default {
   },
   methods: {
     onClickLike (status) {
-      let params = {
-        id: this.house.id,
-        status: this.house.liked ? '0' : '1'
+      if (!this.$store.state.account.user) {
+        this.$router.push({name: 'login'})
+        return false
       }
 
-      this.$houseApi(`house/${this.house.id}/like`, { params }).then(flag => {
-        this.$emit('success', status)
+      let params = {
+        id: this.house.id,
+        status: status ? '1' : '0'
+      }
+
+      this.$houseApi(`house/${this.house.id}/like`, { params }).then(result => {
+        this.onSuccess(status, result)
       })
+    },
+    onSuccess (status, result) {
+      let toastText = this.$tt('Added', '已收藏')
+      let toastType = 'success'
+
+      if (!status) {
+        toastText = this.$tt('Canceled', '已取消')
+        toastType = 'cancel'
+      }
+
+      this.$vux.toast.show({
+        text: toastText,
+        type: toastType
+      })
+      this.$emit('success', status)
     }
   }
 }

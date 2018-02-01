@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import FastClick from 'fastclick'
 import AjaxPlugin from 'vux/src/plugins/ajax'
+import ToastPlugin from 'vux/src/plugins/toast'
 import App from './App'
 import router from './router'
 import Vue2Filters from 'vue2-filters'
@@ -19,6 +20,7 @@ require('@/styles/styles.scss')
 Vue.use(Vue2Filters)
 Vue.use(VueScroller)
 Vue.use(AjaxPlugin)
+Vue.use(ToastPlugin)
 Vue.use(VueRouter)
 Vue.use(Plugins)
 Vue.use(Launcher)

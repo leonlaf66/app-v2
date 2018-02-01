@@ -3,7 +3,9 @@
     <!--顶部导航-->
     <x-header class="fixed" :left-options="{backText: $tt('RETURN', '返回'), preventGoBack: true}" @on-click-back="onClickBack">
       <!-- <a slot="right">收藏</a> -->
-      <a slot="right" class="iconfont icon-marker" style="font-size:26px" @click="onViewMap" v-if="data.latlng"></a>
+      <template slot="right">
+        <a class="iconfont icon-marker" style="font-size:26px" @click="onViewMap" v-if="data.latlng"></a>
+      </template>
     </x-header>
     <!--图像Gallery-->
     <Gallery ref="gallery"></Gallery>
@@ -37,7 +39,7 @@
 
     <!--地图-->
     <div v-transfer-dom @touchmove.prevent @scroll.prevent>
-      <popup class="map-popup" v-model="showMap" position="bottom" style="top:40px">
+      <popup class="map-popup" v-model="showMap" position="bottom" style="top:44px">
         <house-map :loc="{lat: Number(data.latlng[0]), lng: Number(data.latlng[1])}" v-if="data.latlng && showMap"></house-map>
       </popup>
     </div>
@@ -156,7 +158,7 @@ export default {
     position:relative;
     background-color:#fff;
     padding-bottom:5px;
-    margin-top:15px;
+    padding-top:5px;
     .header {margin-top:10px;}
     .lr-pad {padding:0 5px;}
     .name {font-size:16px;font-weight:bold;margin-bottom:3px;}
