@@ -7,5 +7,6 @@ module.exports = {
   API_YP_URL: '"http://172.104.15.126:8002"',
   API_NEWS_URL: '"http://172.104.15.126:8003"',
   API_PASSPORT_URL: '"http://172.104.15.126:8004"',
-  API_MEMBER_URL: '"http://172.104.15.126:8005"'
+  API_MEMBER_URL: '"http://172.104.15.126:8005"',
+  API_COMMENT_URL: '"http://172.104.15.126:8050"'
 }
