@@ -10,5 +10,6 @@ module.exports = merge(prodEnv, {
   API_YP_URL: '"http://127.0.0.1:8002"',
   API_NEWS_URL: '"http://127.0.0.1:8003"',
   API_PASSPORT_URL: '"http://127.0.0.1:8004"',
-  API_MEMBER_URL: '"http://127.0.0.1:8005"'
+  API_MEMBER_URL: '"http://127.0.0.1:8005"',
+  API_COMMENT_URL: '"http://127.0.0.1:8050"'
 })

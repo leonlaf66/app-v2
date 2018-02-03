@@ -27,44 +27,23 @@ export default {
       return Promise.reject(error)
     }
 
-    // house api
-    vm.houseApi = vm.prototype.$houseApi = Vue.http.create({
-      baseURL: process.env.API_HOUSE_URL,
-      params
-    })
-    vm.houseApi.interceptors.request.use(request)
-    vm.houseApi.interceptors.response.use(responseSucess, responseError)
+    let apis = {
+      'houseApi': process.env.API_HOUSE_URL,
+      'ypApi': process.env.API_YP_URL,
+      'newsApi': process.env.API_NEWS_URL,
+      'passportApi': process.env.API_PASSPORT_URL,
+      'memberApi': process.env.API_MEMBER_URL,
+      'commentApi': process.env.API_COMMENT_URL
+    }
 
-    // yellowpage api
-    vm.ypApi = vm.prototype.$ypApi = Vue.http.create({
-      baseURL: process.env.API_YP_URL,
-      params
-    })
-    vm.ypApi.interceptors.request.use(request)
-    vm.ypApi.interceptors.response.use(responseSucess, responseError)
-
-    // news api
-    vm.newsApi = vm.prototype.$newsApi = Vue.http.create({
-      baseURL: process.env.API_NEWS_URL,
-      params
-    })
-    vm.newsApi.interceptors.request.use(request)
-    vm.newsApi.interceptors.response.use(responseSucess, responseError)
-
-    // passport api
-    vm.passportApi = vm.prototype.$passportApi = Vue.http.create({
-      baseURL: process.env.API_PASSPORT_URL,
-      params
-    })
-    vm.passportApi.interceptors.request.use(request)
-    vm.passportApi.interceptors.response.use(responseSucess, responseError)
-
-    // member api
-    vm.memberApi = vm.prototype.$memberApi = Vue.http.create({
-      baseURL: process.env.API_MEMBER_URL,
-      params
-    })
-    vm.memberApi.interceptors.request.use(request)
-    vm.memberApi.interceptors.response.use(responseSucess, responseError)
+    for (let domainId in apis) {
+      let baseURL = apis[domainId]
+      vm[domainId] = vm.prototype['$' + domainId] = Vue.http.create({
+        baseURL: baseURL,
+        params
+      })
+      vm[domainId].interceptors.request.use(request)
+      vm[domainId].interceptors.response.use(responseSucess, responseError)
+    }
   }
 }

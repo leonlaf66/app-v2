@@ -94,6 +94,12 @@ export default new Router({
       name: 'my-schedules',
       meta: {title: ['My Schedules', '我的预约'], auth: true},
       component: () => import('@/pages/member/schedules')
+    },
+    {
+      path: '/:area_id/test',
+      name: 'test',
+      meta: {title: ['Dev Test', '开发测试页']},
+      component: () => import('@/pages/test')
     }
   ]
 })

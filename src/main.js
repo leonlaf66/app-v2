@@ -51,12 +51,13 @@ window.document.setDocumentTitle = function (title) {
 }
 
 router.beforeEach((to, from, next) => {
+  store.dispatch('loading', true)
+
   if (to.meta.auth) {
     if (!store.state.account.user) {
       return next({ name: 'login' })
     }
   }
-  store.dispatch('loading', true)
   next()
 })
 

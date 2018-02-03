@@ -19,6 +19,8 @@
       <cell :title="'Address' | $tt('地址')" :value="data.address" align-items="flex-start"></cell>
       <cell :title="'Website' | $tt('网址')" :value="data.website" align-items="flex-start"></cell>
     </group>
+
+    <comments v-if="data.id" cat-name="yellowpage" :cat-id="data.id" style="margin-top:20px"></comments>
   </div>
 </template>
 
@@ -28,6 +30,7 @@ import XHeader from 'vux/src/components/x-header'
 import Cell from 'vux/src/components/cell'
 import Group from 'vux/src/components/group'
 import Rater from 'vux/src/components/rater'
+import Comments from '@/components/comment'
 
 export default {
   data () {
@@ -75,7 +78,8 @@ export default {
     XHeader,
     Cell,
     Group,
-    Rater
+    Rater,
+    Comments
   }
 }
 </script>
