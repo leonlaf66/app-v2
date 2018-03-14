@@ -146,7 +146,7 @@ export default {
   .left-allow-flag {
     position:absolute;
     top:45%;
-    right:10px;
+    right:-11px;
     color:#99bd2a;
   }
 

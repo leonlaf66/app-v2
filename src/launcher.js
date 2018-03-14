@@ -32,7 +32,6 @@ export default {
       }
     }
 
-    cookie.set('language', language)
     store.commit('CHANGE_LANGUAGE', language)
 
     // 语言方式

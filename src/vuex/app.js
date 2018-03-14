@@ -1,3 +1,5 @@
+import cookie from 'vux/src/tools/cookie'
+
 export default {
   state: {
     language: 'en-US',
@@ -20,6 +22,8 @@ export default {
       commit('UPDATE_LOADING', status)
     },
     changeLanguage ({ commit, dispatch }, lang) {
+      cookie.set('language', lang)
+
       commit('CHANGE_LANGUAGE', lang)
       dispatch('loadTopHouseItems')
     },
