@@ -16,6 +16,10 @@
           <div class="name lr-pad">{{ data.nm }}</div>
           <div class="address lr-pad">{{ data.loc }}</div>
           <div class="price lr-pad">{{ data.price | price }}</div>
+          <div class="est-price lr-pad" v-if="data.est_sale">
+            <label>{{ "UStamite" | $tt('米乐居估价') }}</label>
+            <span>{{ data.est_sale | price }}</span>
+          </div>
         </div>
         <like-it class="ft" :house="data" @success="onLikeSuccess"></like-it>
       </div>
@@ -24,6 +28,10 @@
         <a class="red-text">{{ 'View Recommended Houses' | $tt('查看附近房源') }}</a>
         <i class="ft iconfont icon-right"></i>
       </div>
+
+      <group class="roi-view" :title="'Uestimate' | $tt('投资回报率')">
+        <roi :data="data.roi"></roi>
+      </group>
 
       <div class="grouped-details" v-if="data.details">
         <group :title="group.title" :key="idx" v-for="(group, idx) in data.details">
@@ -58,6 +66,7 @@ import TransferDom from 'vux/src/directives/transfer-dom'
 import Popup from 'vux/src/components/popup'
 import Group from 'vux/src/components/group'
 import Cell from 'vux/src/components/cell'
+import Roi from '@/components/house/roi'
 import HouseList from '@/components/house/list'
 import Nearbies from '@/components/house/nearbies'
 import Gallery from './detail/gallery'
@@ -141,6 +150,7 @@ export default {
     Group,
     Cell,
     Gallery,
+    Roi,
     HouseList,
     Nearbies,
     HouseMap,
@@ -176,10 +186,21 @@ export default {
         }
       }
     }
+    .est-price {
+      margin-bottom:10px;
+      margin-top:-6px;
+      color:red;
+    }
     .ft {
       position:absolute;
       right:10px;
       top:10px;
+    }
+  }
+
+  .roi-view {
+    .weui-cells__title {
+      padding-left:5px;
     }
   }
 

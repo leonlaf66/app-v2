@@ -26,6 +26,7 @@ export default {
     }
 
     Vue.filter('price', (value) => {
+      if (!value) return null
       if (store.state.app.language === 'zh-CN') {
         if (parseFloat(value) > 10000) {
           return `${numeral(value / 10000.0).format('0,0.00')}万美元`
@@ -34,6 +35,11 @@ export default {
       }
 
       return '$' + `${numeral(value).format('0,0')}`
+    })
+
+    Vue.filter('percent', (value) => {
+      if (!value) return null
+      return numeral(value * 100).format('0,0.00') + '%'
     })
 
     Vue.filter('square', (value) => {
