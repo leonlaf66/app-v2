@@ -16,7 +16,7 @@
           <div class="name lr-pad">{{ data.nm }}</div>
           <div class="address lr-pad">{{ data.loc }}</div>
           <div class="price lr-pad">{{ data.price | price }}</div>
-          <div class="est-price lr-pad" v-if="data.est_sale">
+          <div class="est-price lr-pad" v-if="data.prop !== 'RN' && data.est_sale">
             <label>{{ "UStamite" | $tt('米乐居估价') }}</label>
             <span>{{ data.est_sale | price }}</span>
           </div>
@@ -29,7 +29,7 @@
         <i class="ft iconfont icon-right"></i>
       </div>
 
-      <group class="roi-view" :title="'Uestimate' | $tt('投资回报率')">
+      <group class="roi-view" :title="'Uestimate' | $tt('投资回报率')" v-if="data.prop !== 'RN'">
         <roi :data="data.roi"></roi>
       </group>
 
