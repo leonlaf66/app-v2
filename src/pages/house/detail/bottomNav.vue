@@ -81,7 +81,23 @@ export default {
   },
   methods: {
     onClickQuestion () {
-      window.LC_API.open_chat_window()
+      if (!document.getElementById('livechatinc')) {
+        window.LC_API.on_after_load = function () {
+          // LC_API.hide_chat_window()
+          window.LC_API.open_chat_window()
+        }
+
+        var lc = document.createElement('script')
+        lc.type = 'text/javascript'
+        lc.async = true
+        lc.src = 'http://cdn.livechatinc.com/tracking.js'
+        lc.id = 'livechatinc'
+
+        var s = document.getElementsByTagName('script')[0]
+        s.parentNode.insertBefore(lc, s)
+      } else {
+        window.LC_API.open_chat_window()
+      }
     },
     onHouseToured () {
       this.showTour = false
