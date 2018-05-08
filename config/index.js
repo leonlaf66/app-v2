@@ -55,7 +55,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: '',
-    assetsPublicPath: 'http://cdn.webapp.usleju.com/',
+    assetsPublicPath: 'http://webappcdn.usleju.com',
 
     /**
      * Source Maps
