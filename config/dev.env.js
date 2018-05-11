@@ -5,6 +5,7 @@ const prodEnv = require('./prod.env')
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   GOOGLE_MAP_KEY: '"AIzaSyAKfreY6Rf9fOvsJNcxGMsPPNHpXbvj6wo"',
+  STATIC_URL: '"/static"',
   MEDIA_BASE_URL: '"http://media.usleju.local"',
   API_HOUSE_URL: '"http://127.0.0.1:8001"',
   API_YP_URL: '"http://127.0.0.1:8002"',

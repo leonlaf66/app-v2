@@ -13,7 +13,7 @@ export default {
   name: 'buy-house-flow',
   computed: {
     myflowUrl () {
-      return process.env.MEDIA_BASE_URL + '/imgs/myflow.png'
+      return process.env.STATIC_URL + '/imgs/myflow.png'
     }
   },
   components: {

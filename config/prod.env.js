@@ -2,6 +2,7 @@
 module.exports = {
   NODE_ENV: '"production"',
   GOOGLE_MAP_KEY: '"AIzaSyAKfreY6Rf9fOvsJNcxGMsPPNHpXbvj6wo"',
+  STATIC_URL: '"http://webappcdn.usleju.com"',
   MEDIA_BASE_URL: '"http://mediacdn.usleju.com"',
   API_HOUSE_URL: '"http://119.23.14.17:8001"',
   API_YP_URL: '"http://119.23.14.17:8002"',
