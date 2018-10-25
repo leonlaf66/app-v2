@@ -17,7 +17,11 @@
 
 <script>
 import XHeader from 'vux/src/components/x-header'
-
+/*
+if (url.substring(0, 2) === '//') {
+        url = process.env.MEDIA_BASE_URL + '/' + url.substring(2)
+      }
+*/
 export default {
   data () {
     return {
@@ -31,6 +35,7 @@ export default {
     this.load(this.$route.params.id).then(data => {
       this.$setPageTitle(data.title)
       this.data = data
+      this.data.content = this.data.content.replace(/\<img\ssrc=\"\/\//g, '<img src="' + process.env.MEDIA_BASE_URL + '/')
       this.$store.dispatch('loading', false)
     })
   },
