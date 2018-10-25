@@ -20,6 +20,9 @@ export default {
   props: ['items'],
   filters: {
     imageStyle (url) {
+      if (url.substring(0, 1) === '//') {
+        url = 'http://mediacdn.usleju.com/' + url
+      }
       return `background-image:url(${url})`
     }
   }
