@@ -21,7 +21,7 @@ export default {
   filters: {
     imageStyle (url) {
       if (url.substring(0, 1) === '//') {
-        url = 'http://mediacdn.usleju.com/' + url.substring(2)
+        url = process.env.MEDIA_BASE_URL + '/' + url.substring(2)
       }
       return `background-image:url(${url})`
     }
