@@ -20,7 +20,7 @@ export default {
   props: ['items'],
   filters: {
     imageStyle (url) {
-      if (url.substring(0, 1) === '//') {
+      if (url.substring(0, 2) === '//') {
         url = process.env.MEDIA_BASE_URL + '/' + url.substring(2)
       }
       return `background-image:url(${url})`
