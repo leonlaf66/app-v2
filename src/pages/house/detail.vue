@@ -73,6 +73,7 @@ import Gallery from './detail/gallery'
 import LikeIt from './detail/LikeIt'
 import HouseMap from './detail/map'
 import ButtomNav from './detail/bottomNav'
+import NativeApp from '@/components/native-app'
 
 export default {
   data () {
@@ -156,7 +157,8 @@ export default {
     HouseMap,
     LikeIt,
     Popup,
-    ButtomNav
+    ButtomNav,
+    NativeApp
   }
 }
 </script>

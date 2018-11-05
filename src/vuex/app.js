@@ -4,6 +4,7 @@ export default {
   state: {
     language: 'en-US',
     areaId: 'ma',
+    isShowDownload: true,
     isLoading: false
   },
   mutations: {
@@ -15,6 +16,9 @@ export default {
     },
     CHANGE_LANGUAGE (state, value) {
       state.language = value
+    },
+    CHANGE_DOWNLOAD_STATE (state, status) {
+      state.isShowDownload = status
     }
   },
   actions: {
@@ -30,6 +34,9 @@ export default {
     changeArea ({ commit, dispatch }, id) {
       commit('CHENGE_AREA', id)
       dispatch('loadTopHouseItems')
+    },
+    closeDownload ({commit}) {
+      commit('CHANGE_DOWNLOAD_STATE', false)
     }
   }
 }

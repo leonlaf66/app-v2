@@ -1,10 +1,11 @@
 <template>
   <div class="page-home has-b-nav">
+    <native-app></native-app>
     <div class="banner" :style="bannerBgStyle">
       <div class="bar">
         <area-switcher></area-switcher>
+        <language-switcher class="language-switcher"></language-switcher>
       </div>
-      <language-switcher class="language-switcher"></language-switcher>
     </div>
     <top-nav></top-nav>
     <div class="recommended-houses">
@@ -24,6 +25,8 @@ import AreaSwitcher from '@/components/area/switcher'
 import LanguageSwitcher from '@/components/language/switcher'
 import TopNav from './topNav'
 import RcmdHouses from '@/components/house/list'
+import NativeApp from '@/components/native-app'
+
 export default {
   computed: {
     bannerBgStyle () {
@@ -50,7 +53,8 @@ export default {
     AreaSwitcher,
     LanguageSwitcher,
     TopNav,
-    RcmdHouses
+    RcmdHouses,
+    NativeApp
   }
 }
 </script>
@@ -64,6 +68,7 @@ export default {
     .bar {
       height:40px;
       background-color:rgba(0, 0, 0, .3);
+      position:relative;
     }
     .language-switcher {
       position: absolute;
